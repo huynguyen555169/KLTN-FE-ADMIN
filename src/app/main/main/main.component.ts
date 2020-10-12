@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { data, position } from './mockData';
 
 
 @Component({
@@ -8,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-
+  data = data;
+  position = position
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  menuClick(e) {
+    console.log(e)
+  }
 }

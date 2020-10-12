@@ -4,6 +4,7 @@
             <img src="./../../../assets/images/huy1.png" alt="" class="admin-logo w-100">
         </div>
         <div class="col-9 d-flex justify-content-end pr-5">
+            <app-menu-two [data]="data" [position]="position" (actionClick)="menuClick($event)"></app-menu-two>
         </div>
     </div>
 </div>
