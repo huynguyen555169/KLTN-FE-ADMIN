@@ -6,6 +6,7 @@ import { MainComponent } from './main/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableOneModule } from './common-module/table-package/table-one/table-one.module';
 import { MenuTwoModule } from './common-module/menu-package/menu-two/menu-two.module';
+import { MenuThreeModule } from './common-module/menu-package/menu-three/menu-three.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MenuTwoModule } from './common-module/menu-package/menu-two/menu-two.mo
     AppRoutingModule,
     BrowserAnimationsModule,
     TableOneModule,
-    MenuTwoModule
+    MenuTwoModule,
+    MenuThreeModule
 
   ],
   providers: [],

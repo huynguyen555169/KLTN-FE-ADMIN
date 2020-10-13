@@ -4,15 +4,15 @@
             <img src="./../../../assets/images/huy1.png" alt="" class="admin-logo w-100">
         </div>
         <div class="col-9 d-flex justify-content-end pr-5">
-            <app-menu-two [data]="data" [position]="position" (actionClick)="menuClick($event)"></app-menu-two>
+
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-3">
-
+    <div class="col-2">
+        <app-menu-three [data]="dataNav" class="w-100"></app-menu-three>
     </div>
-    <div class="col-9 pr-5">
+    <div class="col-10 pr-5">
         <router-outlet></router-outlet>
     </div>
 </div>

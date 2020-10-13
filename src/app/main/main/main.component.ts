@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { data, position } from './mockData';
+import { data, dataNav, position } from './mockData';
 
 
 @Component({
@@ -8,15 +8,12 @@ import { data, position } from './mockData';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  dataNav = dataNav;
 
-  data = data;
-  position = position
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  menuClick(e) {
-    console.log(e)
-  }
+
 }
