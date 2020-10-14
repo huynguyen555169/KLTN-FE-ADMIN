@@ -44,7 +44,7 @@ $transition-close: all 0.4s ease-out;
   }
 
   .main-content {
-    background-color: #1890ff;
+    background-color: #666;
     &,
     & * {
       transition: $transition-close;

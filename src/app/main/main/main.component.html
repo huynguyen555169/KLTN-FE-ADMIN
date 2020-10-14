@@ -1,16 +1,16 @@
 <div class="admin-container">
     <div class="row admin-header">
+        <div class="col-9">
+
+        </div>
         <div class="col-3">
             <img src="./../../../assets/images/huy1.png" alt="" class="admin-logo w-100">
-        </div>
-        <div class="col-9 d-flex justify-content-end pr-5">
-
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-2">
-        <app-menu-three [data]="dataNav" class="w-100"></app-menu-three>
+        <app-menu-three [data]="dataNav" [width]="width" class="w-100"></app-menu-three>
     </div>
     <div class="col-10 pr-5">
         <router-outlet></router-outlet>

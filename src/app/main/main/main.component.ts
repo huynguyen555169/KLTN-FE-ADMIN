@@ -9,6 +9,7 @@ import { data, dataNav, position } from './mockData';
 })
 export class MainComponent implements OnInit {
   dataNav = dataNav;
+  width = 400;
 
 
   constructor() { }

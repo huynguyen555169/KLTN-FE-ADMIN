@@ -4,6 +4,10 @@ import { FashionComponent } from './fashion.component';
 import { FashionRoutingModule } from './fashion-routing.module';
 import { TableOneModule } from 'src/app/common-module/table-package/table-one/table-one.module';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from "@angular/material/button";
+import { CardAddProductModule } from 'src/app/common-module/card-package/card-add-product/card-add-product.module';
+
 
 
 @NgModule({
@@ -11,7 +15,10 @@ import { TableOneModule } from 'src/app/common-module/table-package/table-one/ta
   imports: [
     CommonModule,
     FashionRoutingModule,
-    TableOneModule
+    TableOneModule,
+    MatDialogModule,
+    MatButtonModule,
+    CardAddProductModule
   ],
   exports: [
     FashionComponent

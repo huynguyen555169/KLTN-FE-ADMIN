@@ -31,35 +31,17 @@ export const dataNav = {
             name: 'Fashion', // tên hiển thị trên sidebar
             url: 'fashion', // url để navigate
             icon: 'book', // icon hiển thị (material icon)
-        },
-        {
-            id: '2',
-            name: 'Shoes', // tên hiển thị trên sidebar
-            url: '', // url để navigate
-            icon: 'book', // icon hiển thị (material icon)
-        },
-        {
-            id: '3',
-            name: 'Wallet', // tên hiển thị trên sidebar
-            url: '', // url để navigate
-            icon: 'book', // icon hiển thị (material icon)
-        },
-        {
-            id: '3',
-            name: 'Watch', // tên hiển thị trên sidebar
-            url: '', // url để navigate
-            icon: 'book', // icon hiển thị (material icon)
-        },]
+        }]
     }],
     footActions: [{
         id: 'string',
         name: 'string', // tên hiển thị trên sidebar
-        url: 'string', // url để navigate
+        url: 'fashion', // url để navigate
         icon: 'book', // icon hiển thị (material icon)
         children: [{
             id: 'string',
             name: 'string', // tên hiển thị trên sidebar
-            url: '', // url để navigate
+            url: 'fashion', // url để navigate
             icon: 'book', // icon hiển thị (material icon)
         }]
     }]
