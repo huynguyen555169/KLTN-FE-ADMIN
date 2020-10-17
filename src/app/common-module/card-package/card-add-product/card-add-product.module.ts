@@ -6,19 +6,20 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CDiscussionAttachComponent } from './c-discussion-attach/c-discussion-attach.component';
 
 
 
 
 
 @NgModule({
-  declarations: [CardAddProductComponent],
+  declarations: [CardAddProductComponent, CDiscussionAttachComponent],
   imports: [
     CommonModule,
     MatInputModule,
     FormsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
     CardAddProductComponent

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
+import { CDiscussionAttachComponent } from './c-discussion-attach.component';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('CDiscussionAttachComponent', () => {
+  let component: CDiscussionAttachComponent;
+  let fixture: ComponentFixture<CDiscussionAttachComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainComponent]
+      declarations: [CDiscussionAttachComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(CDiscussionAttachComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
