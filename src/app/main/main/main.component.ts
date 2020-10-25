@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { data, dataNav, position } from './mockData';
 
 
@@ -10,11 +11,11 @@ import { data, dataNav, position } from './mockData';
 export class MainComponent implements OnInit {
   dataNav = dataNav;
   width = 400;
+  isShowHeader = false;
 
-
-  constructor() { }
+  constructor(public router: Router) {
+  }
 
   ngOnInit(): void {
   }
-
 }

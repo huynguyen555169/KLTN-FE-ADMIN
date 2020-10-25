@@ -1,0 +1,58 @@
+<div class="login-container d-flex align-items-center flex-column">
+    <div class="login-header"></div>
+    <form novalidate [formGroup]="formLogin" class="form-container d-flex flex-column">
+        <div class="form-title w-100">Đăng nhập</div>
+        <div class="form-group--container w-100">
+            <div class="form-group w-100">
+                <label class="form-label">User ID</label>
+                <input class="form-control" type="text" formControlName="userID" placeholder="Nhập tài khoản" />
+                <div class="form-error" *ngIf="
+              userID.invalid && (userID.dirty || userID.touched);
+              else elseUser
+            ">
+                    <div *ngIf="userID.errors?.message">
+                        {{ userID.errors.message }}
+                    </div>
+                </div>
+                <ng-template #elseUser>
+                    <div class="none-error"></div>
+                </ng-template>
+            </div>
+            <div class="form-group w-100">
+                <label class="form-label pt-3">User Password</label>
+                <input class="form-control" type="password" formControlName="userPassWord"
+                    placeholder="Nhập mật khẩu" />
+                <div class="form-error" *ngIf="
+              userPassWord.invalid &&
+                (userPassWord.dirty || userPassWord.touched);
+              else elsePassWord
+            ">
+                    <span *ngIf="userPassWord.errors.message">
+                        {{ userPassWord.errors.message }}
+                    </span>
+                </div>
+                <ng-template #elsePassWord>
+                    <div class="none-error"></div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="form-footer w-100 d-flex flex-column pt-4">
+            <button mat-raised-button color="primary" (click)="handleLoginClick()" class="w-100"
+                [disabled]="!formLogin.valid">
+                Đăng nhập
+            </button>
+        </div>
+    </form>
+    <div class="login-footer">
+        <div>
+
+            <span class="pr-5">お問合わせ</span>
+            <span class="px-5">運営会社</span>
+            <span class="pl-5">プライバシーポリシー</span>
+        </div>
+        <div class="w-100 text-center pt-2 login-footer-copyright">
+            Copyright © Intage Inc. All Rights Reserved
+        </div>
+    </div>
+</div>

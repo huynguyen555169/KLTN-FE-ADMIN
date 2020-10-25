@@ -4,22 +4,21 @@ import { CardAddProductComponent } from 'src/app/common-module/card-package/card
 import { data } from './mockData';
 
 @Component({
-  selector: 'app-fashion',
-  templateUrl: './fashion.component.html',
-  styleUrls: ['./fashion.component.scss']
+  selector: 'app-shoes',
+  templateUrl: './shoes.component.html',
+  styleUrls: ['./shoes.component.scss']
 })
-export class FashionComponent implements OnInit {
-
+export class ShoesComponent implements OnInit {
   data = data;
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog1: MatDialog) { }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
   openDialog() {
-    const dialogRef = this.dialog.open(CardAddProductComponent);
+    this.dialog1.open(CardAddProductComponent);
   }
   handleItemDelete(e) {
     console.log(e)
   }
+
 }

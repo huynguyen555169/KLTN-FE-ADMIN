@@ -1,13 +1,17 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CardEditComponent } from '../../card-package/card-edit/card-edit.component';
 
 export interface ProductModel {
   product_id: number;
   product_name: string;
   product_image1: string;
   product_image2: string;
+  product_status: boolean;
   product_type_fk: number;
   product_size_fk: number;
   product_unit_price: number;
@@ -29,13 +33,14 @@ export interface ProductModel {
 
 export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: any;
-  displayedColumns: string[] = ['product_id', 'product_image', 'product_name', 'product_unit_price', 'product_qty', 'action'];
+  @Output() itemDelete = new EventEmitter<string>();
+  displayedColumns: string[] = ['product_id', 'product_image', 'product_name', 'product_unit_price', 'product_qty', 'product_status', 'action'];
   dataSource: MatTableDataSource<ProductModel>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -57,6 +62,9 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
   handleDelete(e) {
-    console.log(e)
+    this.itemDelete.emit(e)
+    this.dialog.open(CardEditComponent, {
+      data: e
+    });
   }
 }

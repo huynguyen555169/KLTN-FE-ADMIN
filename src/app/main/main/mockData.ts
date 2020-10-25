@@ -24,24 +24,35 @@ export const dataNav = {
     urls: [{
         id: 'string',
         name: 'Categories', // tên hiển thị trên sidebar
-        url: 'fashion', // url để navigate
+        url: '', // url để navigate
         icon: 'book', // icon hiển thị (material icon)
         children: [{
             id: '1',
             name: 'Fashion', // tên hiển thị trên sidebar
             url: 'fashion', // url để navigate
             icon: 'book', // icon hiển thị (material icon)
+        }, {
+            id: '2',
+            name: 'Shoes', // tên hiển thị trên sidebar
+            url: 'shoes', // url để navigate
+            icon: 'book', // icon hiển thị (material icon)
         }]
+    }, {
+        id: 'string',
+        name: 'Customer', // tên hiển thị trên sidebar
+        url: 'customer', // url để navigate
+        icon: 'book', // icon hiển thị (material icon)
+
     }],
     footActions: [{
         id: 'string',
-        name: 'string', // tên hiển thị trên sidebar
-        url: 'fashion', // url để navigate
+        name: 'Logout', // tên hiển thị trên sidebar
+        url: '', // url để navigate
         icon: 'book', // icon hiển thị (material icon)
         children: [{
             id: 'string',
             name: 'string', // tên hiển thị trên sidebar
-            url: 'fashion', // url để navigate
+            url: '', // url để navigate
             icon: 'book', // icon hiển thị (material icon)
         }]
     }]

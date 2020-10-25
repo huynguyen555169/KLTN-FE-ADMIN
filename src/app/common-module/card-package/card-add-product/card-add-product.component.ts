@@ -9,10 +9,13 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./card-add-product.component.scss']
 })
 export class CardAddProductComponent implements OnInit {
-  product_image = [];
-  product_name = '';
-  product_price = '';
-  product_qty = 1;
+  data: any = {
+    product_image: [],
+    product_name: '',
+    product_price: '',
+    product_qty: 1,
+  }
+
   constructor(private dialogRef: MatDialogRef<CardAddProductComponent>) { }
 
   ngOnInit(): void {
@@ -21,13 +24,9 @@ export class CardAddProductComponent implements OnInit {
     this.dialogRef.close()
   }
   handleClick(e) {
-    this.product_image.push(...e);
+    this.data.product_image.push(...e);
   }
   handleSave() {
-    console.log(this.product_image)
-    console.log(this.product_name)
-    console.log(this.product_price)
-    console.log(this.product_qty)
   }
 
 }

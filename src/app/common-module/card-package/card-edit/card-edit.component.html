@@ -1,0 +1,101 @@
+<div class="card-edit--container">
+    <div class="card-edit--header d-flex align-items-center">
+        <span class="material-icons">
+            edit
+        </span>
+        Edit Product
+    </div>
+    <div [formGroup]="editUserForm" class="card-edit--body p-5">
+        <div class="d-flex pb-3">
+            <div class="card-edit-left">
+                <div class="card-edit--title">
+                    ID
+                </div>
+                <div class="card-edit--value">
+                    {{data.product_id}}
+                </div>
+
+            </div>
+            <div class="card-edit-right">
+                <div class="card-edit--title">
+                    Số lượng
+                </div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="total" />
+                    <mat-error>{{
+                      editUserForm.controls["total"].errors?.message
+                    }}</mat-error>
+                </mat-form-field>
+
+            </div>
+        </div>
+        <div class="d-flex pb-3">
+            <div class="card-edit-left">
+                <div class="card-edit--title">
+                    Tên sản phẩm
+                </div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="name" />
+                    <mat-error>{{
+                      editUserForm.controls["name"].errors?.message
+                    }}</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="card-edit-right">
+                <div class="card-edit--title">
+                    Giá
+                </div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="price" />
+                    <mat-error>{{
+                      editUserForm.controls["name"].errors?.message
+                    }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex pb-3">
+            <div class="card-edit-left">
+                <div class="card-edit--title">
+                    Status
+                </div>
+                <mat-form-field [floatLabel]="'never'">
+                    <mat-select name="status" formControlName="status">
+                        <mat-option *ngFor="let item of statusArr" [value]="item.value">
+                            {{ item.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+            <div class="card-edit-right">
+                <div class="card-edit--title">
+                    Số lượng
+                </div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="total" />
+                    <mat-error>{{
+                      editUserForm.controls["name"].errors?.message
+                    }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-flex w-100 justify-content-center align-items-center">
+        <button mat-raised-button class="mr-4 save-btn d-flex justify-content-around align-items-center"
+            (click)="handleEdit()">
+            <span class="material-icons" style="color:#1278d7">
+                save
+            </span>Save
+        </button>
+        <button mat-raised-button class="ml-4 edit-btn" (click)="handleCancel()">
+            <span class="material-icons" style="color:red">
+                cancel
+            </span>
+            Cancel
+        </button>
+    </div>
+
+
+</div>

@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+}
+::ng-deep {
+  th.mat-header-cell {
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+  }
+  td.mat-cell {
+    font-size: 18px;
+  }
+  th.mat-header-cell:last-of-type {
+    width: 10%;
+  }
+}
+.color-btn {
+  color: #0089d8;
+  .material-icons {
+    color: black;
+  }
+}
+.active-true {
+  background-color: #838383;
+  border-radius: 3px;
+  text-align: center;
+  color: #ffffff;
+  width: 60px;
+  height: 24px;
+}
+.active-false {
+  background-color: green;
+  border-radius: 3px;
+  width: 60px;
+  height: 24px;
+  color: #ffffff;
+  text-align: center;
+}

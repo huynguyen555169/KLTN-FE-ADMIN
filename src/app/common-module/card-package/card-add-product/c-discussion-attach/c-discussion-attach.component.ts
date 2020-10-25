@@ -25,7 +25,7 @@ export class CDiscussionAttachComponent implements OnInit {
    * handle file from browsing
    */
   fileBrowseHandler(files) {
-    this.prepareFilesList(files);
+    this.prepareFilesList(files)
   }
 
   /**
