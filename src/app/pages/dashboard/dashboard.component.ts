@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,22 +7,99 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-  }
-  public barChartLabels = ['2006', '2007', '2008', '2009'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-
-  public barChartData = [
+  @ViewChild('revenue') revenueChart: ElementRef<HTMLCanvasElement>;
+  // line chart
+  public lineChartData = [
     {
-      data: [65, 59, 80, 81], label: 'Series A'
+      data: [2000, 4000, 6000, 8000, 10000, 2000, 4000, 6000, 8000, 10000, 10000, 3000],
+      label: 'This month',
     },
     {
-      data: [65, 59, 80, 81], label: 'Series B'
-    }
-  ]
+      data: [4000, 4000, 6000, 8000, 20000, 8000, 10000, 2000, 4000, 6000, 8000, 10000],
+      label: 'Last month',
+    },
+  ];
+  public optionsLine = {
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 0,
+      },
+    },
+
+    legend: {
+      labels: {
+        // This more specific font property overrides the global property
+        fontColor: '#FFFFFF',
+      },
+    },
+    title: {
+      display: true,
+      fontColor: '#FFFFFF',
+      text: 'Revenue',
+      position: 'top',
+    },
+  };
+  public lineChartType = 'line';
+  public lineChartLabels = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+  // doughnut chart
+  public optionsDoughnut = {
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 0,
+      },
+    },
+
+    legend: {
+      labels: {
+        // This more specific font property overrides the global property
+        fontColor: '#FFFFFF',
+      },
+    },
+    title: {
+      display: true,
+      fontColor: '#FFFFFF',
+      text: 'Access By Device',
+      position: 'top',
+    },
+  };
+  public doughnutChartData = [60, 30, 10];
+  public doughnutChartType = 'doughnut';
+  public doughnutChartLabels = ['Mobile', 'Desktop', 'Tablet'];
+
+  // pie chart
+  public optionsPie = {
+    layout: {
+      padding: {
+        left: 50,
+        right: 50,
+        top: 0,
+        bottom: 0,
+      },
+    },
+
+    legend: {
+      labels: {
+        // This more specific font property overrides the global property
+        fontColor: '#FFFFFF',
+      },
+    },
+    title: {
+      display: true,
+      fontColor: '#FFFFFF',
+      text: 'Customers',
+      position: 'top',
+    },
+  };
+  public pieChartData = [400, 150, 50];
+  public pieChartType = 'pie';
+  public pieChartLabels = ['New', 'Continue', 'Log Out'];
+
   constructor() { }
 
   ngOnInit(): void {

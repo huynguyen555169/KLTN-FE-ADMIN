@@ -3,8 +3,9 @@
     height: 100vh;
     position: relative;
     font-size: 24px;
-    background: url("./../../../assets/images/bg.jpg") no-repeat center/contain;
-
+    margin-left: -70px;
+    margin-top: -60px;
+    color: black;
     .form-container {
         margin-top: 165px;
         padding: 60px 100px 60px 100px;
@@ -64,7 +65,7 @@
         font-size: 18px;
     }
     .login-footer {
-        color: #ffffff;
+        color: black;
         padding-top: 20px;
         span:nth-child(2) {
             position: relative;
