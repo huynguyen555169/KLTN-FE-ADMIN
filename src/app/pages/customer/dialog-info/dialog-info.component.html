@@ -1,0 +1,72 @@
+<div class="dialog-info-container p-2">
+    <div class="dialog-info-title">
+        <span class="material-icons"> edit </span>
+        Sửa thông tin
+    </div>
+    <div class="dialog-info-body p-5 w-100" [formGroup]="editUserForm">
+        <div class="d-flex justify-content-between">
+            <div class="pr-18">
+                <div class="dialog-title">ID</div>
+                <div class="dialog-value">{{ data.customer_id }}</div>
+            </div>
+            <div>
+                <div class="dialog-title">Phone</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="phone" />
+                    <mat-error>{{
+              editUserForm.controls["phone"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="pr-18">
+                <div class="dialog-title">Name</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="name" />
+                    <mat-error>{{
+              editUserForm.controls["name"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Gender</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="gender" />
+                    <mat-error>{{
+              editUserForm.controls["gender"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="pr-18">
+                <div class="dialog-title">Birthday</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="birthday" placeholder="" />
+                    <mat-error>{{
+              editUserForm.controls["birthday"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Status</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <mat-select name="gender" formControlName="status">
+                        <mat-option *ngFor="let i of status" [value]="i.value">
+                            {{ i.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-info-action py-2 w-100 d-flex justify-content-center">
+        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleEdit()">
+            Save
+        </button>
+        <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
+            Cancel
+        </button>
+    </div>
+</div>

@@ -1,27 +1,10 @@
 import { EventEmitter, Output } from '@angular/core';
 import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CardEditComponent } from '../../card-package/card-edit/card-edit.component';
-
-export interface ProductModel {
-  product_id: number;
-  product_name: string;
-  product_image1: string;
-  product_image2: string;
-  product_status: boolean;
-  product_type_fk: number;
-  product_size_fk: number;
-  product_unit_price: number;
-  product_paid_price: number;
-  product_discount: number;
-  product_desciption: string;
-  product_qty: number;
 
 
-}
 /** Constants used to fill up our data base. */
 
 
@@ -33,17 +16,15 @@ export interface ProductModel {
 
 export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: any;
-  @Output() itemDelete = new EventEmitter<string>();
-  displayedColumns: string[] = ['product_id', 'product_image', 'product_name', 'product_unit_price', 'product_qty', 'product_status', 'action'];
-  dataSource: MatTableDataSource<ProductModel>;
+  @Output() itemEdit = new EventEmitter<string>();
+  displayedColumns: string[] = ['product_id', 'product_images', 'product_name', 'product_unit_price', 'product_qty', 'product_status', 'action'];
+  dataSource: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(public dialog: MatDialog) {
   }
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -61,10 +42,8 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
       this.dataSource.paginator.firstPage();
     }
   }
-  handleDelete(e) {
-    this.itemDelete.emit(e)
-    this.dialog.open(CardEditComponent, {
-      data: e
-    });
+  handleEdit(e) {
+    this.itemEdit.emit(e)
+
   }
 }

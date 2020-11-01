@@ -1,101 +1,84 @@
-<div class="card-edit--container">
-    <div class="card-edit--header d-flex align-items-center">
-        <span class="material-icons">
-            edit
-        </span>
-        Edit Product
+<div class="dialog-create-container p-2">
+    <div class="dialog-create-title d-flex align-items-center">
+        <span class="material-icons pr-2"> edit</span>
+        Sửa sản phẩm
     </div>
-    <div [formGroup]="editUserForm" class="card-edit--body p-5">
-        <div class="d-flex pb-3">
-            <div class="card-edit-left">
-                <div class="card-edit--title">
-                    ID
-                </div>
-                <div class="card-edit--value">
-                    {{data.product_id}}
-                </div>
-
-            </div>
-            <div class="card-edit-right">
-                <div class="card-edit--title">
-                    Số lượng
-                </div>
+    <div class="dialog-create-body w-100" [formGroup]="createForm">
+        <div class="d-flex justify-content-between">
+            <div class="pr-5">
+                <div class="dialog-title">Tên sản phẩm</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="total" />
+                    <input matInput formControlName="product_name" />
                     <mat-error>{{
-                      editUserForm.controls["total"].errors?.message
-                    }}</mat-error>
+              createForm.controls["product_name"].errors?.message
+            }}</mat-error>
                 </mat-form-field>
-
             </div>
-        </div>
-        <div class="d-flex pb-3">
-            <div class="card-edit-left">
-                <div class="card-edit--title">
-                    Tên sản phẩm
-                </div>
+            <div>
+                <div class="dialog-title">Giá bán</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="name" />
+                    <input matInput formControlName="product_unit_price" />
                     <mat-error>{{
-                      editUserForm.controls["name"].errors?.message
-                    }}</mat-error>
-                </mat-form-field>
-
-            </div>
-            <div class="card-edit-right">
-                <div class="card-edit--title">
-                    Giá
-                </div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="price" />
-                    <mat-error>{{
-                      editUserForm.controls["name"].errors?.message
-                    }}</mat-error>
+              createForm.controls["product_unit_price"].errors?.message
+            }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
-        <div class="d-flex pb-3">
-            <div class="card-edit-left">
-                <div class="card-edit--title">
-                    Status
-                </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Mô tả</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <mat-select name="status" formControlName="status">
-                        <mat-option *ngFor="let item of statusArr" [value]="item.value">
-                            {{ item.viewValue }}
+                    <input matInput formControlName="product_description" />
+                    <mat-error>{{
+              createForm.controls["product_description"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Số lượng</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="product_qty" />
+                    <mat-error>{{
+              createForm.controls["product_qty"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Type</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <mat-select name="product_type_fk" formControlName="product_type_fk">
+                        <mat-option *ngFor="let product_type_fk of data.typeData" [value]="product_type_fk.type">
+                            {{ product_type_fk.viewType }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
             </div>
-            <div class="card-edit-right">
-                <div class="card-edit--title">
-                    Số lượng
-                </div>
+            <div>
+                <div class="dialog-title">Size</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="total" />
-                    <mat-error>{{
-                      editUserForm.controls["name"].errors?.message
-                    }}</mat-error>
+                    <mat-select name="product_size_fk" formControlName="product_size_fk">
+                        <mat-option *ngFor="let product_size_fk of data.sizeData" [value]="product_size_fk.size">
+                            {{ product_size_fk.viewSize }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
         </div>
-
+        <div class="d-flex justify-content-between">
+            <div class="user-status">
+                Enabled<mat-slide-toggle formControlName="product_status" class="px-2"></mat-slide-toggle>Disabled
+            </div>
+        </div>
     </div>
-    <div class="d-flex w-100 justify-content-center align-items-center">
-        <button mat-raised-button class="mr-4 save-btn d-flex justify-content-around align-items-center"
-            (click)="handleEdit()">
-            <span class="material-icons" style="color:#1278d7">
-                save
-            </span>Save
+    <div class="dialog-create-action pb-2 w-100 d-flex justify-content-center">
+        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
+            [disabled]="!createForm.dirty || !createForm.valid">
+            Save
         </button>
-        <button mat-raised-button class="ml-4 edit-btn" (click)="handleCancel()">
-            <span class="material-icons" style="color:red">
-                cancel
-            </span>
+        <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
             Cancel
         </button>
     </div>
-
-
 </div>

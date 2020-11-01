@@ -1,0 +1,33 @@
+.dialog--container {
+  height: 180px;
+  width: 600px;
+  padding: 20px;
+  ::ng-deep {
+    .mat-dialog-content {
+      font-size: 18px;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black !important;
+  }
+  .btn-action-dialog {
+    .btn {
+      border: 1px solid #1b708f;
+      width: 100px;
+    }
+    .btn:nth-child(1) {
+      background-color: #1b708f;
+      color: #ffffff;
+    }
+    .btn:nth-child(2) {
+      margin-left: 20px;
+    }
+  }
+}
+::ng-deep {
+  .mat-dialog-container {
+    overflow: unset;
+  }
+}

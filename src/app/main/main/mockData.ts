@@ -31,15 +31,16 @@ export const dataNav = {
             name: 'Fashion', // tên hiển thị trên sidebar
             url: 'fashion', // url để navigate
             icon: 'book', // icon hiển thị (material icon)
-        }, {
-            id: '2',
-            name: 'Shoes', // tên hiển thị trên sidebar
-            url: 'shoes', // url để navigate
-            icon: 'book', // icon hiển thị (material icon)
         }]
     }, {
         id: 'string',
         name: 'Customer', // tên hiển thị trên sidebar
+        url: 'customer', // url để navigate
+        icon: 'book', // icon hiển thị (material icon)
+
+    }, {
+        id: 'string',
+        name: 'Sales', // tên hiển thị trên sidebar
         url: 'customer', // url để navigate
         icon: 'book', // icon hiển thị (material icon)
 

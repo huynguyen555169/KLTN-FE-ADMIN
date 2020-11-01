@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center align-items-center border-dot mb-3 p-4" appDragDropFile
+  (fileDropped)="onFileDropped($event)">
+  <input class="custom-input-file" type="file" #fileDropRef id="fileDropRef" multiple
+    (change)="fileBrowseHandler($event.target.files)" />
+  <label class="text-hover text-primary mb-0" for="fileDropRef">Choose Files</label>
+</div>
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <div class="file-icon" style="width: 50px">
+      <mat-icon>insert_drive_file</mat-icon>
+    </div>
+    <div class="info">
+      <h4 class="name">
+        {{ file?.name }}
+      </h4>
+      <p class="size">
+        {{ formatBytes(file?.size) }}
+      </p>
+    </div>
+
+    <div class="delete" (click)="deleteFile(i)">
+      <mat-icon>delete</mat-icon>
+    </div>
+  </div>
+</div>

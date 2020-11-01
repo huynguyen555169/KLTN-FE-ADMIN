@@ -41,30 +41,38 @@ export const data = {
         {
             customer_id: 1,
             customer_fullname: 'Hydrogen',
-            customer_phone: 'img.png',
-            customer_gender: '10/10/2020',
-            customer_birthday: 'H',
+            customer_phone: '098.224.0061',
+            customer_gender: 'Nam',
+            customer_birthday: '10/07/2000',
+            customer_status: true
         },
         {
             customer_id: 1,
             customer_fullname: 'Hydrogen',
-            customer_phone: 'img.png',
-            customer_gender: '10/10/2020',
-            customer_birthday: 'H',
+            customer_phone: '098.224.0061',
+            customer_gender: 'Nam',
+            customer_birthday: '10/07/2000',
+            customer_status: true
         },
         {
             customer_id: 1,
             customer_fullname: 'Hydrogen',
-            customer_phone: 'img.png',
-            customer_gender: '10/10/2020',
-            customer_birthday: 'H',
+            customer_phone: '098.224.0061',
+            customer_gender: 'Nam',
+            customer_birthday: '10/07/2000',
+            customer_status: true
         },
         {
             customer_id: 1,
             customer_fullname: 'Hydrogen',
-            customer_phone: 'img.png',
-            customer_gender: '10/10/2020',
-            customer_birthday: 'H',
-        }
+            customer_phone: '098.224.0061',
+            customer_gender: 'Nam',
+            customer_birthday: '10/07/2000',
+            customer_status: true
+        },
     ],
 };
+export const dataStatus = [
+    { value: true, viewValue: 'Enabled' },
+    { value: false, viewValue: 'Disabled' },
+];

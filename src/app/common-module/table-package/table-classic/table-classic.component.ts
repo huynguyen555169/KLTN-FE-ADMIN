@@ -28,7 +28,6 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
   /**
    * Using sort
    */
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   /**
@@ -58,7 +57,6 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
   /**
    * Innit data for table

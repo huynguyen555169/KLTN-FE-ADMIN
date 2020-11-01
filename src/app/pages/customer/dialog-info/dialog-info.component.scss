@@ -1,0 +1,34 @@
+.dialog-info-container {
+    font-size: 24px;
+    font-weight: 400;
+    .dialog-info-title {
+        color: #2e2e2e;
+    }
+    .dialog-info-body {
+        .dialog-value {
+            color: #777777;
+        }
+    }
+}
+::ng-deep {
+    .mat-form-field-infix {
+        width: 250px !important;
+    }
+    input.mat-input-element {
+        color: #777777;
+    }
+}
+.pr-18 {
+    padding-right: 180px;
+}
+.dialog-btn {
+    width: 150px;
+    height: 50px;
+    box-shadow: none;
+    border: 1px solid #1278d7;
+    color: #1278d7;
+}
+.dialog-btn:first-child {
+    background-color: #1278d7;
+    color: #ffffff;
+}

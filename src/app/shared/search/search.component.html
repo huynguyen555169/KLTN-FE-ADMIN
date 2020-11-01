@@ -1,0 +1,9 @@
+<div class="search d-flex align-items-center justify-content-center">
+  <input type="text" class="search-input h-100" value="{{ value }}" [(ngModel)]="value" (keydown.enter)="handleInput()"
+    placeholder="{{ placeholder }}" />
+  <button mat-button class="search-btn d-flex justify-content-center align-items-center h-100 ml-1"
+    (click)="handleInput()">
+    <span class="material-icons"> search </span>
+
+  </button>
+</div>

@@ -1,2 +1,13 @@
-<app-table-classic [tableConfig]="data" (editData)="handleEdit($event)">
-</app-table-classic>
+<div class="w-100">
+
+    <div class="pt-3 pb-5">
+        <app-search (valueSearch)="handleValueSearch($event)" [placeholder]="placeholder"></app-search>
+
+    </div>
+
+    <app-table-classic [tableConfig]="data" (editData)="handleEdit($event)">
+    </app-table-classic>
+    <div class="pagi w-100 text-center">
+        <app-pagination [currentPage]="'1'" [totalPage]="'9'" (pageChange)="handlePageChange($event)"></app-pagination>
+    </div>
+</div>
