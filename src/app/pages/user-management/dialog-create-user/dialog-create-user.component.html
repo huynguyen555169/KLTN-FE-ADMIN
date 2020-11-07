@@ -1,0 +1,82 @@
+<div class="dialog-create-container p-2">
+  <div class="dialog-create-title d-flex align-items-center">
+    <span class="material-icons pr-2"> library_add </span>
+    Thêm nhân viên
+  </div>
+  <div class="dialog-create-body w-100" [formGroup]="createUserForm">
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">UserID</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="userId" />
+          <mat-error>{{
+            createUserForm.controls["userId"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Email</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="email" />
+          <mat-error>{{
+            createUserForm.controls["email"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">Name</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="userName" />
+          <mat-error>{{
+            createUserForm.controls["userName"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Phone</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="phone" />
+          <mat-error>{{
+            createUserForm.controls["phone"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">Password</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="**********" />
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error>{{
+            createUserForm.controls["password"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Role</div>
+        <mat-form-field [floatLabel]="'never'">
+          <mat-select name="role" formControlName="roleId">
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{ role.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-create-action pb-5 w-100 d-flex justify-content-center">
+    <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
+      [disabled]="!createUserForm.dirty || !createUserForm.valid">
+      Save
+    </button>
+    <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
+      Cancel
+    </button>
+  </div>
+</div>

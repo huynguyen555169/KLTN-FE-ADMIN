@@ -4,11 +4,12 @@ export class FashionModel {
     product_name: string;
     product_qty: number;
     product_type_fk: string;
-    product_size_fk: number;
+    product_size_fk: string;
     product_unit_price: number;
     product_paid_price: string;
     product_discount: string;
     product_description: string;
+    product_status: boolean;
 
     constructor(data: any) {
         this.product_id = data.product_id;
@@ -21,5 +22,6 @@ export class FashionModel {
         this.product_paid_price = data.product_paid_price;
         this.product_discount = data.product_discount;
         this.product_description = data.product_description;
+        this.product_status = data.product_status
     }
 }

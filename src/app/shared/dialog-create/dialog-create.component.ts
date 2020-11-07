@@ -18,9 +18,9 @@ export class DialogCreateComponent implements OnInit {
   roles;
   files;
   param = {
-    title: 'キャンセル確認',
+    title: 'Thông báo',
     message:
-      'キャンセルを押したら、保存できません。キャンセルにも宜しいですか。',
+      'Đã có thông tin thay đổi, bạn thực sự muốn huỷ?',
     buttons: [
       { text: 'YES', actionValue: 1 },
       { text: 'NO', actionValue: 2 },

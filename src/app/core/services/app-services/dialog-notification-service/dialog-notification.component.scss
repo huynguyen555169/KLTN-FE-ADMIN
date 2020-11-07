@@ -1,7 +1,6 @@
 .dialog--container {
   height: 180px;
   width: 600px;
-  padding: 20px;
   ::ng-deep {
     .mat-dialog-content {
       font-size: 18px;
@@ -13,6 +12,7 @@
     color: black !important;
   }
   .btn-action-dialog {
+    margin-top: 40px;
     .btn {
       border: 1px solid #1b708f;
       width: 100px;

@@ -17,7 +17,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: any;
   @Output() itemEdit = new EventEmitter<string>();
-  displayedColumns: string[] = ['product_id', 'product_images', 'product_name', 'product_unit_price', 'product_qty', 'product_status', 'action'];
+  displayedColumns: string[] = ['product_images', 'product_name', 'product_unit_price', 'product_qty', 'product_type_fk', 'product_status', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;

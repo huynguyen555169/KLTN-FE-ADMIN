@@ -3,36 +3,96 @@ table {
 }
 ::ng-deep {
   th.mat-header-cell {
-    font-size: 18px;
+    font-size: 14px;
     color: black;
     font-weight: bold;
   }
   td.mat-cell {
-    font-size: 18px;
+    font-size: 14px;
   }
   th.mat-header-cell:last-of-type {
-    width: 10%;
+    width: 8%;
   }
 }
 .color-btn {
   color: #0089d8;
+  font-size: 14px;
   .material-icons {
     color: black;
   }
 }
 .active-true {
-  background-color: #838383;
   border-radius: 3px;
   text-align: center;
   color: #ffffff;
-  width: 60px;
+  width: 100px;
   height: 24px;
+  background-color: green;
 }
 .active-false {
-  background-color: green;
+  background-color: #838383;
+
   border-radius: 3px;
-  width: 60px;
+  width: 100px;
   height: 24px;
   color: #ffffff;
   text-align: center;
+}
+.pending {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  background-color: #fff566;
+}
+.cancel {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  color: #ffffff;
+  background-color: #fa8c16;
+}
+.paymentfail {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  color: #ffffff;
+  background-color: #f5222d;
+}
+.paymentsuccess {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  color: #ffffff;
+  background-color: #52c41a;
+}
+.shipping {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  color: #ffffff;
+  background-color: #1890ff;
+}
+.done {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 24px;
+  background-color: #e6f7ff;
 }

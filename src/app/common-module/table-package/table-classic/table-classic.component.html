@@ -1,5 +1,6 @@
-<div *ngIf="tableConfig.data.length !== 0">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-striped" matSort>
+<div *ngIf="data.length !== 0">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-striped" matSort
+    (matSortChange)="handleSortChange($event)">
     <ng-container [matColumnDef]="column.value" *ngFor="let column of tableConfig.columns">
       <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sort">
         {{ column.displayName }}
@@ -17,13 +18,34 @@
         </ng-container>
         <ng-container *ngIf="!isArray(element[column.value]) && column.type === 'chip'">
           <div class="active-true" *ngIf="element[column.value] === true; else elseBlock">
-            Enable
+            Enabled
           </div>
           <ng-template #elseBlock>
-            <div class="active-false">Disable</div>
+            <div class="active-false">Disabled</div>
           </ng-template>
         </ng-container>
+        <ng-container *ngIf="!isArray(element[column.value]) && column.type === 'chip1'">
+          <div class="pending" *ngIf="element[column.value] === 'pending'">
+            Pending
+          </div>
+          <div class="cancel" *ngIf="element[column.value] === 'cancel'">
+            Cancel
+          </div>
+          <div class="paymentfail" *ngIf="element[column.value] === 'paymentfail'">
+            Fail
+          </div>
+          <div class="paymentsuccess" *ngIf="element[column.value] === 'paymentsuccess'">
+            Success
+          </div>
+          <div class="shipping" *ngIf="element[column.value] === 'shipping'">
+            Shipping
+          </div>
+          <div class="done" *ngIf="element[column.value] === 'done'">
+            Done
+          </div>
 
+
+        </ng-container>
       </td>
     </ng-container>
     <ng-container *ngIf="tableConfig.action" matColumnDef="more">
@@ -32,10 +54,14 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button (click)="editItem(element)" class="color-btn" *ngIf="tableConfig.action.edit">
-          Edit
+          <span class="material-icons">
+            edit_road
+          </span>
         </button>
         <button mat-icon-button (click)="viewDetail(element)" class="color-btn" *ngIf="tableConfig.action.view">
-          View
+          <span class="material-icons">
+            preview
+          </span>
         </button>
         <button mat-icon-button (click)="deleteItem(element)" class="color-btn" *ngIf="tableConfig.action.delete">
           <span class="material-icons"> delete_forever </span>
@@ -46,6 +72,6 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
   </table>
 </div>
-<div *ngIf="tableConfig.data.length === 0" class="d-flex row justify-content-center">
+<div *ngIf="data.length === 0" class="d-flex row justify-content-center">
   No data
 </div>

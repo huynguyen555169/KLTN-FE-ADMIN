@@ -1,114 +1,97 @@
-.login-container {
-    width: 100%;
-    height: 100vh;
+:host {
     position: relative;
-    font-size: 24px;
-    margin-left: -70px;
-    margin-top: -60px;
-    color: black;
-    .form-container {
-        margin-top: 165px;
-        padding: 60px 100px 60px 100px;
-        width: 800px;
-        background-color: #dfe5ef;
-        position: relative;
-        .form-title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 36px;
-            color: #15498d;
-        }
-        .form-group--container {
-            .form-label {
-            }
-            .form-control {
-                height: 60px;
-            }
-            .form-group {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-            }
-            .form-group:last-child {
-                padding-bottom: 20px;
-            }
-        }
-        .form-footer {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-
-            .btn-forgot {
-                color: #0468ff;
-                text-align: center;
-                text-decoration: underline;
-            }
-        }
-        &::before {
-            position: absolute;
-            content: "";
-            background: #ffffff url("./../../../assets/images/huy1.png") no-repeat center/contain;
-            top: -50px;
-            left: 30%;
-            width: 40%;
-            height: 100px;
+    top: 60px;
+    left: -150px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+#login-page {
+    height: 580px;
+    width: 1240px;
+    font-size: 16px;
+    color: #d6e2ff;
+    background-repeat: no-repeat;
+    background-size: 1440px 720px;
+    .login-layer {
+        width: 50%;
+        height: 100%;
+        background-color: #123c74;
+        padding: 30px 110px 0 110px;
+        opacity: 0.8;
+    }
+    .logo {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        background-repeat: no-repeat;
+        background-size: 80px 80px;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .custom-input {
+        color: white;
+    }
+    .register-btn {
+        width: 140px;
+        height: 40px;
+        border: 1px solid white;
+    }
+    .register-btn:hover {
+        border: 1px solid #001c4d;
+        background-color: #001c4d;
+    }
+    .login-btn {
+        width: 140px;
+        height: 40px;
+        border: 1px solid white;
+        &:hover {
+            border: 1px solid #001c4d;
+            background-color: #001c4d;
         }
     }
-    .form-error {
-        color: red;
-        width: 100%;
-        height: 20px;
-        font-style: italic;
-        font-weight: 300;
-        font-size: 18px;
-    }
-    .login-footer {
-        color: black;
-        padding-top: 20px;
-        span:nth-child(2) {
-            position: relative;
-            &::before {
-                position: absolute;
-                content: "";
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 2px;
-                background-color: #ffffff;
-            }
-            &::after {
-                position: absolute;
-                content: "";
-                right: 0;
-                top: 0;
-                height: 100%;
-                width: 2px;
-                background-color: #ffffff;
-            }
+    ::ng-deep {
+        .mat-form-field-appearance-outline .mat-form-field-outline-end,
+        .mat-form-field-appearance-outline .mat-form-field-outline-start {
+            background-color: #001c4d;
         }
-        .login-footer-copyright {
-            font-weight: 300;
+        .mat-form-field-appearance-outline .mat-form-field-prefix {
+            margin-right: 20px;
+            margin-left: 10px;
+        }
+        ::placeholder {
+            color: #c4cad9;
+        }
+        .mat-input-element {
+            caret-color: white;
+            color: white;
+        }
+        .mat-checkbox-background {
+            border: 0.5px solid white;
+        }
+        .mat-form-field-appearance-outline .mat-form-field-outline {
+            color: rgba(139, 119, 224, 0.12);
+        }
+        .mat-form-field-appearance-outline .mat-form-field-infix {
+            padding: 5px 0 10px 0;
+        }
+        .mat-form-field-label-wrapper {
+            display: none;
         }
     }
-    &::before {
-        position: absolute;
-        content: "";
-        background: url("./../../../assets/images/huy1.png") no-repeat center/contain;
-        top: 0;
-        left: 0;
-        width: 200px;
-        height: 0px;
+    a {
+        color: #ff7818;
     }
 }
-.none-error {
-    width: 100%;
-    height: 20px;
+.mb-10 {
+    margin-bottom: 10px;
 }
-::ng-deep {
-    .mat-raised-button {
-        height: 60px;
-        font-size: 24px;
-    }
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mb-9 {
+    margin-bottom: 9.5px;
 }

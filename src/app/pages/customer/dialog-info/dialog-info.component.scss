@@ -1,5 +1,5 @@
 .dialog-info-container {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
     .dialog-info-title {
         color: #2e2e2e;
@@ -22,13 +22,21 @@
     padding-right: 180px;
 }
 .dialog-btn {
+    font-weight: 500;
+    font-size: 18px;
     width: 150px;
     height: 50px;
     box-shadow: none;
-    border: 1px solid #1278d7;
-    color: #1278d7;
+    border: 1px solid #15748d;
+    color: #15748d;
 }
 .dialog-btn:first-child {
-    background-color: #1278d7;
+    background-color: #15748d;
     color: #ffffff;
+}
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #6a6a6a !important;
+    color: #666666;
 }

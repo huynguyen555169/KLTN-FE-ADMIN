@@ -12,6 +12,20 @@ import { DialogCreateComponent } from 'src/app/shared/dialog-create/dialog-creat
 })
 export class FashionComponent implements OnInit {
 
+  typeFashion = [
+    {
+      key: 1,
+      value: 'Fashion'
+    },
+    {
+      key: 2,
+      value: 'Watch'
+    },
+    {
+      key: 3,
+      value: 'Shoes'
+    }
+  ]
   data: any;
   typeData: any;
   sizeData: any;
@@ -43,6 +57,9 @@ export class FashionComponent implements OnInit {
       console.log(result)
     });
   }
+  handleTypeFashion(type) {
+    this.getData(type)
+  }
   handleItemEdit(e) {
     const index = this.data.indexOf(e);
     const dialogRef = this.dialog.open(CardEditComponent, {
@@ -61,9 +78,9 @@ export class FashionComponent implements OnInit {
 
   }
   handleValueSearch(e) {
-
+    this.getData(e);
   }
-  getData(text?, currentPage?, sort?): void {
+  getData(text?, currentPage?, sort?, type?): void {
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = {};
     if (currentPage) {
@@ -78,6 +95,9 @@ export class FashionComponent implements OnInit {
         sortType: sort.direction,
       });
       // this.sort = sort;
+      if (type) {
+        Object.assign(dataGetListFashion.params, { type: type });
+      }
     }
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.data = item

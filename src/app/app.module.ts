@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableOneModule } from './common-module/table-package/table-one/table-one.module';
 import { MenuTwoModule } from './common-module/menu-package/menu-two/menu-two.module';
 import { MenuThreeModule } from './common-module/menu-package/menu-three/menu-three.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +20,8 @@ import { MenuThreeModule } from './common-module/menu-package/menu-three/menu-th
     BrowserAnimationsModule,
     TableOneModule,
     MenuTwoModule,
-    MenuThreeModule
+    MenuThreeModule,
+    HttpClientModule
 
   ],
   providers: [],

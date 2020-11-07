@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CDiscussionAttachComponent implements OnInit {
   files: any[] = [];
+  url = [];
 
   @Output() filesAttach = new EventEmitter<any>();
   constructor() { }
@@ -35,8 +36,17 @@ export class CDiscussionAttachComponent implements OnInit {
   prepareFilesList(files: Array<any>) {
     for (const item of files) {
       this.files.push(item);
+      var reader = new FileReader();
+
+      reader.readAsDataURL(item); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.url.push(event.target.result);
+      }
     }
     this.filesAttach.emit(this.files);
+    console.log(this.url)
+
   }
 
   /**
@@ -44,6 +54,7 @@ export class CDiscussionAttachComponent implements OnInit {
    * @param index (File index)
    */
   deleteFile(index: number) {
+    this.url.splice(index, 1)
     this.files.splice(index, 1);
     this.filesAttach.emit(this.files);
   }

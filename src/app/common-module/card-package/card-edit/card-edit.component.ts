@@ -68,9 +68,9 @@ export class CardEditComponent implements OnInit {
   }
   handleSave(): void {
     this.fashionEdit = this.createForm.value;
-    // Object.assign(this.fashionEdit, { product_images: this.files });
+    Object.assign(this.fashionEdit, { product_images: this.data.data.product_images });
     console.log(this.fashionEdit)
-    this.fashionService.createFashion(this.fashionEdit).subscribe((res) => {
+    this.fashionService.updateFashion(this.fashionEdit).subscribe((res) => {
       this.fashionEdit = new FashionModel(res);
       this.dialogRef.close(this.fashionEdit);
     })

@@ -1,52 +1,40 @@
-<div class="login-container d-flex align-items-center flex-column">
-    <div class="login-header"></div>
-    <form novalidate [formGroup]="formLogin" class="form-container d-flex flex-column">
-        <div class="form-title w-100">Đăng nhập</div>
-        <div class="form-group--container w-100">
-            <div class="form-group w-100">
-                <label class="form-label">User ID</label>
-                <input class="form-control" type="text" formControlName="userID" placeholder="Nhập tài khoản" />
-                <div class="form-error" *ngIf="
-              userID.invalid && (userID.dirty || userID.touched);
-              else elseUser
-            ">
-                    <div *ngIf="userID.errors?.message">
-                        {{ userID.errors.message }}
-                    </div>
-                </div>
-                <ng-template #elseUser>
-                    <div class="none-error"></div>
-                </ng-template>
-            </div>
-            <div class="form-group w-100">
-                <label class="form-label pt-3">User Password</label>
-                <input class="form-control" type="password" formControlName="userPassWord"
-                    placeholder="Nhập mật khẩu" />
-                <div class="form-error" *ngIf="
-              userPassWord.invalid &&
-                (userPassWord.dirty || userPassWord.touched);
-              else elsePassWord
-            ">
-                    <span *ngIf="userPassWord.errors.message">
-                        {{ userPassWord.errors.message }}
-                    </span>
-                </div>
-                <ng-template #elsePassWord>
-                    <div class="none-error"></div>
-                </ng-template>
-            </div>
+<div id="login-page" [ngStyle]="{ 'background-image': getBackGroundImg() }">
+    <div class="login-layer float-right d-flex flex-column align-items-center">
+        <div class="logo mb-30" [ngStyle]="{ 'background-image': getUrl() }"></div>
+        <div class="title mb-30">
+            {{ title }}
         </div>
+        <div class="login-form mb-9" [formGroup]="loginForm">
+            <span class="mb-10">Account ID/ Email</span>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-icon matPrefix>mail</mat-icon>
 
-        <div class="form-footer w-100 d-flex flex-column pt-4">
-            <button mat-raised-button color="primary" (click)="handleLoginClick()" class="w-100"
-                [disabled]="!formLogin.valid">
-                Đăng nhập
-            </button>
+                <input matInput placeholder="email@email.com" formControlName="email" required autocomplete="off" />
+            </mat-form-field>
+            <span class="mb-10">Password</span>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-icon matPrefix>lock</mat-icon>
+                <input matInput placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                    [type]="hide ? 'password' : 'text'" formControlName="password" required />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
         </div>
-    </form>
-    <div class="login-footer">
-        <div class="w-100 text-center pt-2 login-footer-copyright">
-            Copyright © . All Rights Reserved
+        <div class="w-100 d-flex flex-row justify-content-between mb-30">
+            <div>
+                <section>
+                    <mat-checkbox (change)="checkboxChange($event)" color="primary">Remember me</mat-checkbox>
+                </section>
+            </div>
+            <div class="d-flex align-items-center">
+                <a [href]="forgotNavigation">Forgot password?</a>
+            </div>
+        </div>
+        <div class="w-100 d-flex flex-row justify-content-between">
+            <button mat-button class="register-btn" (click)="register()">Register</button>
+            <button mat-button class="login-btn" (click)="login()">Login</button>
         </div>
     </div>
 </div>

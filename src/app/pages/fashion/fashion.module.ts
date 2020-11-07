@@ -9,6 +9,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { PaginationModule } from 'src/app/shared/pagination/pagination.module';
 import { SearchModule } from 'src/app/shared/search/search.module';
 import { DialogCreateModule } from 'src/app/shared/dialog-create/dialog-create.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -22,7 +23,8 @@ import { DialogCreateModule } from 'src/app/shared/dialog-create/dialog-create.m
     MatButtonModule,
     DialogCreateModule,
     PaginationModule,
-    SearchModule
+    SearchModule,
+    MatIconModule
   ],
   exports: [
     FashionComponent

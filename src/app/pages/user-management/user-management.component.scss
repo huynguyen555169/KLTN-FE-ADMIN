@@ -1,0 +1,50 @@
+.user-container {
+  font-size: 18px;
+  position: relative;
+
+  .user-container--header {
+    height: 50px;
+    .user-header--title {
+      font-size: 24px;
+      padding-left: 20px;
+    }
+  }
+  .user-container--body {
+    color: black;
+    width: 100%;
+    padding-top: 40px;
+    .user-body--search {
+      .user-search-input {
+        width: 92%;
+      }
+      .user-search-btn {
+        width: 8%;
+        background-color: #15748d;
+        color: #ffffff;
+      }
+    }
+    .user-body--table {
+      padding-top: 30px;
+    }
+  }
+  .user-container-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: black;
+  }
+}
+table {
+  width: 100%;
+}
+.table-action {
+  color: #83bfe3;
+}
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0px !important;
+  }
+  .mat-button {
+    font-size: 18px;
+  }
+}

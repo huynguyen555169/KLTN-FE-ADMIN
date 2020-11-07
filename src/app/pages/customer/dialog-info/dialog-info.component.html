@@ -62,7 +62,8 @@
         </div>
     </div>
     <div class="dialog-info-action py-2 w-100 d-flex justify-content-center">
-        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleEdit()">
+        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
+            [disabled]="!editUserForm.dirty || !editUserForm.valid">
             Save
         </button>
         <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">

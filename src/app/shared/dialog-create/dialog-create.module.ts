@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DialogNotificationModule } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.module';
 import { CDiscussionAttachComponent } from './c-discussion-attach/c-discussion-attach.component';
-
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -26,6 +27,8 @@ import { CDiscussionAttachComponent } from './c-discussion-attach/c-discussion-a
     MatInputModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatBadgeModule,
+    MatButtonModule
 
   ]
 })

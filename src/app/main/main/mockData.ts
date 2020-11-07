@@ -34,27 +34,38 @@ export const dataNav = {
         }]
     }, {
         id: 'string',
-        name: 'Customer', // tên hiển thị trên sidebar
-        url: 'customer', // url để navigate
-        icon: 'book', // icon hiển thị (material icon)
+        name: 'User', // tên hiển thị trên sidebar
+        url: '', // url để navigate
+        icon: 'supervisor_account', // icon hiển thị (material icon)
+        children: [{
+            id: '1',
+            name: 'Customer', // tên hiển thị trên sidebar
+            url: 'customer', // url để navigate
+            icon: 'face', // icon hiển thị (material icon)
+        }, {
+            id: '2',
+            name: 'Staff', // tên hiển thị trên sidebar
+            url: 'staff', // url để navigate
+            icon: 'face', // icon hiển thị (material icon)
+        }, {
+            id: 'e',
+            name: 'Permission', // tên hiển thị trên sidebar
+            url: 'permission', // url để navigate
+            icon: 'face', // icon hiển thị (material icon)
+        }]
 
     }, {
         id: 'string',
         name: 'Sales', // tên hiển thị trên sidebar
-        url: 'customer', // url để navigate
-        icon: 'book', // icon hiển thị (material icon)
+        url: 'sale', // url để navigate
+        icon: 'view_list', // icon hiển thị (material icon)
 
     }],
     footActions: [{
         id: 'string',
         name: 'Logout', // tên hiển thị trên sidebar
-        url: '', // url để navigate
-        icon: 'book', // icon hiển thị (material icon)
-        children: [{
-            id: 'string',
-            name: 'string', // tên hiển thị trên sidebar
-            url: '', // url để navigate
-            icon: 'book', // icon hiển thị (material icon)
-        }]
+        url: 'login', // url để navigate
+        icon: 'exit_to_app', // icon hiển thị (material icon)
+
     }]
 }

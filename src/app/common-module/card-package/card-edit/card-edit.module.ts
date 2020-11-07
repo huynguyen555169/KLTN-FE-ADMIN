@@ -10,11 +10,13 @@ import { DialogNotificationModule } from 'src/app/core/services/app-services/dia
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CDiscussionAttach1Component } from './c-discussion-attach1/c-discussion-attach1.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 
 @NgModule({
-  declarations: [CardEditComponent],
+  declarations: [CardEditComponent, CDiscussionAttach1Component],
   imports: [
     CommonModule,
     DialogNotificationModule,
@@ -26,7 +28,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatInputModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatButtonModule
+    MatButtonModule, MatBadgeModule,
+
   ],
   exports: [
     CardEditComponent

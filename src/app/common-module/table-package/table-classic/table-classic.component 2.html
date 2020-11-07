@@ -1,0 +1,51 @@
+<div *ngIf="tableConfig.data.length !== 0">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-striped" matSort>
+    <ng-container [matColumnDef]="column.value" *ngFor="let column of tableConfig.columns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sort">
+        {{ column.displayName }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="isArray(element[column.value])">
+          <div class="d-flex flex-row">
+            <div *ngFor="let item of element[column.value]" class="mr-2">
+              {{ item }}
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!isArray(element[column.value]) && !column.type">
+          {{ element[column.value] }}
+        </ng-container>
+        <ng-container *ngIf="!isArray(element[column.value]) && column.type === 'chip'">
+          <div class="active-true" *ngIf="element[column.value] === true; else elseBlock">
+            Enable
+          </div>
+          <ng-template #elseBlock>
+            <div class="active-false">Disable</div>
+          </ng-template>
+        </ng-container>
+
+      </td>
+    </ng-container>
+    <ng-container *ngIf="tableConfig.action" matColumnDef="more">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ tableConfig.action.name }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="editItem(element)" class="color-btn" *ngIf="tableConfig.action.edit">
+          Edit
+        </button>
+        <button mat-icon-button (click)="viewDetail(element)" class="color-btn" *ngIf="tableConfig.action.view">
+          View
+        </button>
+        <button mat-icon-button (click)="deleteItem(element)" class="color-btn" *ngIf="tableConfig.action.delete">
+          <span class="material-icons"> delete_forever </span>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+</div>
+<div *ngIf="tableConfig.data.length === 0" class="d-flex row justify-content-center">
+  No data
+</div>

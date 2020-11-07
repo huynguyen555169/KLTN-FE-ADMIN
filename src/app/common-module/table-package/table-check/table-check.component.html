@@ -1,0 +1,39 @@
+<div class="table-check-container d-flex flex-column">
+  <div class="table-title text-left">
+    Permissions
+  </div>
+  <div class="division"></div>
+
+  <div class="table-wrapper d-flex flex-column" *ngIf="dataList && dataList.length">
+    <div class="table-row row-header">
+      <div class="table-cell" *ngFor="let header of headers">
+        {{ header.value }}
+      </div>
+    </div>
+    <div class="table-body-wrapper">
+      <div class="table-row table-body" *ngFor="let data of dataList">
+        <div class="table-cell" *ngFor="let cell of objectKeys(data); let i = index">
+          <span *ngIf="data[headers[i].key].type === 'text'">
+            {{ data[headers[i].key]?.value }}
+          </span>
+          <span *ngIf="data[headers[i].key].type === 'check-box'" class="material-icons"
+            (click)="changeCheck(data, headers[i].key)">
+            {{
+              data[headers[i].key]?.value
+                ? "check_box"
+                : "check_box_outline_blank"
+            }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-container--action d-flex mt-3">
+    <button class="card-action--save mr-4" mat-button color="accent" (click)="handleSave()">
+      <span class="material-icons"> save </span>Save
+    </button>
+    <button class="card-action--delete mr-4" mat-button color="warn" (click)="handleCancel()">
+      <span class="material-icons pr-2"> cancel </span>Cancel
+    </button>
+  </div>
+</div>

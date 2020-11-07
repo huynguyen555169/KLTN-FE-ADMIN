@@ -1,0 +1,89 @@
+<div class="dialog-info-container p-2">
+  <div class="dialog-info-title d-flex align-items-center">
+    <span class="material-icons">
+      edit
+    </span>
+    Sửa thông tin
+  </div>
+  <div class="dialog-info-body w-100" [formGroup]="editUserForm">
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">UserID</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="userId" readonly />
+          <mat-error>{{
+            editUserForm.controls["userId"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Email</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="email" />
+          <mat-error>{{
+            editUserForm.controls["email"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">Name</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="userName" />
+          <mat-error>{{
+            editUserForm.controls["userName"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Phone</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput formControlName="phone" />
+          <mat-error>{{
+            editUserForm.controls["phone"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="pr-18">
+        <div class="dialog-title">Password</div>
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="**********" />
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error>{{
+            editUserForm.controls["password"].errors?.message
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="dialog-title">Role</div>
+        <mat-form-field [floatLabel]="'never'">
+          <mat-select name="role" formControlName="roleId">
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{ role.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <div class="user-status">
+        Enabled<mat-slide-toggle formControlName="isDelete" class="px-2"></mat-slide-toggle>Disabled
+      </div>
+    </div>
+  </div>
+  <div class="dialog-info-action pb-3 w-100 d-flex justify-content-center">
+    <button mat-raised-button class="mr-4 dialog-btn" (click)="handleEdit()"
+      [disabled]="!editUserForm.dirty || !editUserForm.valid">
+      Save
+    </button>
+    <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
+      Cancel
+    </button>
+  </div>
+</div>

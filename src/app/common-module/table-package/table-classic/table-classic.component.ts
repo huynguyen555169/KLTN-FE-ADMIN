@@ -9,8 +9,8 @@ import {
   Input,
   OnChanges,
   AfterViewInit,
+  SimpleChanges,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-table-classic',
@@ -19,12 +19,15 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class TableClassicComponent implements AfterViewInit, OnChanges {
   @Input() tableConfig;
+  @Input() data;
+  @Input() clearSort;
   /**
    * Out put data when click edit in detail
    */
   @Output() viewDetailData = new EventEmitter<any>();
   @Output() deleteData = new EventEmitter<any>();
   @Output() editData = new EventEmitter<any>();
+  @Output() isSort = new EventEmitter<any>();
   /**
    * Using sort
    */
@@ -46,17 +49,21 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
    * Variable use binding data
    */
   columnsToDisplayDetail = [];
+  //
+  // chip = TABLE_COLUMN_TYPE.CHIP;
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource();
     this.columnsToDisplay = [];
     this.columnsToDisplayDetail = [];
     this.initData();
-    this.dataSource.sort = this.sort;
+    if (changes.clearSort && !changes.clearSort.isFirstChange()) {
+      this.clearSortHeader();
+    }
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
   /**
    * Innit data for table
@@ -68,7 +75,7 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
     if (this.tableConfig.action && this.tableConfig.action.name) {
       this.columnsToDisplay.push('more');
     }
-    this.dataSource = new MatTableDataSource(this.tableConfig.data);
+    this.dataSource = new MatTableDataSource(this.data);
   }
 
   /**
@@ -94,12 +101,11 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
   editItem(value): void {
     this.editData.emit(value);
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  handleSortChange(e): void {
+    this.isSort.emit(e);
+  }
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  clearSortHeader(): any {
+    this.sort.sort({ id: '', start: 'asc', disableClear: false });
   }
 }

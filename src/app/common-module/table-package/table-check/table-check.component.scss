@@ -1,0 +1,113 @@
+:host {
+  width: 100%;
+  line-height: 1;
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #0b3070;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #304a6e;
+  }
+}
+.table-check-container {
+  height: 100%;
+  padding: 40px 50px 40px;
+  background-color: #001C4D;
+  .table-title {
+    font-size: 36px;
+    color: white;
+  }
+  .division {
+    height: 1px;
+    background-color: white;
+    margin-top: 30px;
+  }
+
+  .table-title,
+  .division {
+    flex-shrink: 0;
+  }
+
+  .table-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    margin-top: 30px;
+    .table-row {
+      display: flex;
+      background-color: #0b3070;
+
+      .table-cell {
+        color: white;
+        width: 20%;
+        padding: 20px 20px 5px 20px;
+        &:nth-child(1) {
+          width: 50%;
+        }
+
+        span:not(.material-icons) {
+          font-size: 18px;
+        }
+
+        span.material-icons {
+          cursor: pointer;
+          font-size: 20px;
+        }
+      }
+
+      &.row-header {
+        background-color: #062E74;
+        padding-right: 7px;
+        .table-cell {
+          padding: 16px 20px;
+        }
+      }
+    }
+
+    .table-body-wrapper {
+      flex-grow: 1;
+      overflow: auto;
+    }
+  }
+}
+.card-container--action {
+  .card-action--edit {
+    height: 30px;
+    width: 85px;
+    display: flex;
+   
+    align-items: center;
+    color: #ff7917;
+    border: 1px solid #ff7917;
+  }
+  .card-action--delete {
+    height: 30px;
+    width: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #f44336;
+  }
+  .card-action--save {
+    height: 30px;
+    width: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #ff4081;
+  }
+  .card-action--cancel {
+    height: 30px;
+    width: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #f44336;
+  }
+}
