@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogNotificationService } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.service';
 import { UserService } from 'src/app/core/services/api/user-service/user.service';
 import { CustomValidator } from 'src/app/core/validate-service/custom-validator';
+import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 
 
 @Component({
@@ -13,7 +14,6 @@ import { CustomValidator } from 'src/app/core/validate-service/custom-validator'
   styleUrls: ['./dialog-create-user.component.scss'],
 })
 export class DialogCreateUserComponent implements OnInit {
-  user;
   hide = true;
   roles;
   param = {
@@ -65,12 +65,13 @@ export class DialogCreateUserComponent implements OnInit {
     });
   }
   handleSave(): void {
-    this.user = this.createUserForm.value;
-    this.userService.createUser(this.user).subscribe(
+    let user = this.createUserForm.value;
+    const dataCreateUser = new HttpRequestModel()
+    dataCreateUser.body = { user }
+    this.userService.createUser(dataCreateUser).subscribe(
       (res) => {
-        console.log(res);
-        this.user = new UserModel(res);
-        this.dialogRef.close(this.user);
+        user = new UserModel(res.body.user);
+        this.dialogRef.close(user);
       },
       (error) => {
         console.log('error');

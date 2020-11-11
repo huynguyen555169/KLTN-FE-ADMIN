@@ -11,21 +11,7 @@ import { DialogCreateComponent } from 'src/app/shared/dialog-create/dialog-creat
   styleUrls: ['./fashion.component.scss']
 })
 export class FashionComponent implements OnInit {
-
-  typeFashion = [
-    {
-      key: 1,
-      value: 'Fashion'
-    },
-    {
-      key: 2,
-      value: 'Watch'
-    },
-    {
-      key: 3,
-      value: 'Shoes'
-    }
-  ]
+  sort;
   data: any;
   typeData: any;
   sizeData: any;
@@ -35,10 +21,12 @@ export class FashionComponent implements OnInit {
   constructor(public dialog: MatDialog, private fashionService: FashionService) { }
 
   ngOnInit(): void {
-    this.fashionService.getListType().subscribe((type) => {
-      this.typeData = type
+    let dataGetType = new HttpRequestModel();
+    this.fashionService.getListType(dataGetType).subscribe((res) => {
+      this.typeData = res
     })
-    this.fashionService.getListSize().subscribe((size) => {
+    let dataGetSize = new HttpRequestModel();
+    this.fashionService.getListSize(dataGetSize).subscribe((size) => {
       this.sizeData = size
     })
     this.getData()
@@ -49,58 +37,78 @@ export class FashionComponent implements OnInit {
       data: { typeData: this.typeData, sizeData: this.sizeData },
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.data = [...this.data]
-      if (result) {
-        this.data.unshift(result);
-
-      }
       console.log(result)
+      this.data.data = [...this.data.data]
+      if (result) {
+        this.data.data.unshift(result.data);
+        console.log(this.data.data)
+      }
     });
   }
   handleTypeFashion(type) {
     this.getData(type)
   }
   handleItemEdit(e) {
-    const index = this.data.indexOf(e);
     const dialogRef = this.dialog.open(CardEditComponent, {
       disableClose: true,
       data: { data: e, typeData: this.typeData, sizeData: this.sizeData },
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.data = [...this.data]
-      if (result) {
-        this.data.splice(index, 1);
-        this.data.unshift(result);
-      }
+      let x = this.data.data.findIndex(x => x.product_id === result.product.product_id)
+      this.data.data = [...this.data.data];
+      this.data.data.splice(x, 1);
+      this.data.data.unshift(result.product)
+      console.log(result.product)
+
     });
   }
-  handlePageChange(e) {
 
+
+  handlePageChange(e) {
+    // this.getData(e)
+    const dataGetListFashion = new HttpRequestModel();
+    dataGetListFashion.params = { currentPage: e };
+    this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.data = item
+    }, (error) => {
+      console.log('lỗi')
+    })
   }
   handleValueSearch(e) {
-    this.getData(e);
+    // this.getData(e)
+    const dataGetListFashion = new HttpRequestModel();
+    dataGetListFashion.params = { search: e };
+    this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.data = item
+    }, (error) => {
+      console.log('lỗi')
+    })
+    // this.getData(e);
   }
   getData(text?, currentPage?, sort?, type?): void {
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = {};
-    if (currentPage) {
-      Object.assign(dataGetListFashion.params, { page: currentPage });
-    }
+
+    // if (currentPage) {
+    //   Object.assign(dataGetListFashion.params, { currentPage: currentPage });
+    // }
     if (text) {
-      Object.assign(dataGetListFashion.params, { keyword: text });
+      Object.assign(dataGetListFashion.params, { search: text });
     }
     if (sort && sort.active && sort.direction) {
       Object.assign(dataGetListFashion.params, {
         sort: sort.active,
         sortType: sort.direction,
       });
-      // this.sort = sort;
+      this.sort = sort;
       if (type) {
         Object.assign(dataGetListFashion.params, { type: type });
       }
     }
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.data = item
+    }, (error) => {
+      console.log('lỗi')
     })
     this.keyword = text ? text : '';
     this.currentPage = currentPage ? currentPage : 1;

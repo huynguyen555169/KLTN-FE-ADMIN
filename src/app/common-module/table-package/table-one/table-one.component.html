@@ -32,16 +32,16 @@
         <!-- Color Column -->
         <ng-container matColumnDef="product_type_fk">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-            <td mat-cell *matCellDef="let row"> {{row.product_type_fk}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.product_type[0].product_type_name}} </td>
         </ng-container>
 
         <!-- Color Column -->
         <ng-container matColumnDef="product_status">
             <th mat-header-cell *matHeaderCellDef> Status </th>
             <td mat-cell *matCellDef="let row">
-                <span *ngIf="row.product_status === true; else elseBlock" style="color:red">Enabled</span>
+                <div *ngIf="row.product_status === true; else elseBlock" class="active-true">Enabled</div>
                 <ng-template #elseBlock>
-                    <span style="color:green">Disabled</span>
+                    <div class="active-false">Disabled</div>
                 </ng-template>
             </td>
         </ng-container>

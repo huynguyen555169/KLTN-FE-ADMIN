@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
    * Login form
    */
   loginForm: FormGroup;
+  statusLogin = false;
 
   constructor(
     private router: Router,
@@ -112,7 +113,7 @@ export class LoginComponent implements OnInit {
         this.authentication.currentUserSubject.next(res);
         this.router.navigate(['/dashboard']);
       }, () => {
-        this.spinner.hide();
+        this.statusLogin = true;
       });
     }
   }

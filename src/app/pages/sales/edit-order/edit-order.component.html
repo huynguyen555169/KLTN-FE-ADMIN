@@ -1,0 +1,78 @@
+<div class="dialog-create-container p-2">
+    <div class="dialog-create-title d-flex align-items-center pb-4">
+        <span class="material-icons pr-2 "> edit</span>
+        Sửa đơn hàng
+    </div>
+    <div class="dialog-create-body w-100" [formGroup]="editForm">
+        <div class="d-flex justify-content-between">
+            <div class="pr-5">
+                <div class="dialog-title">Tên khách hàng</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="name" />
+                    <mat-error>{{
+              editForm.controls["name"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Tình trạng đơn hàng</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="status" />
+                    <mat-error>{{
+              editForm.controls["status"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Mã đơn hàng</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="code" />
+                    <mat-error>{{
+              editForm.controls["code"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Ngày mua</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="date" />
+                    <mat-error>{{
+              editForm.controls["date"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Sản phẩm</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="product" />
+                    <mat-error>{{
+              editForm.controls["product"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Giá</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="price" />
+                    <mat-error>{{
+              editForm.controls["price"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </div>
+    <div class="dialog-create-action pb-2 w-100 d-flex justify-content-center">
+        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
+            [disabled]="!editForm.dirty || !editForm.valid">
+            Save
+        </button>
+        <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
+            Cancel
+        </button>
+    </div>
+</div>

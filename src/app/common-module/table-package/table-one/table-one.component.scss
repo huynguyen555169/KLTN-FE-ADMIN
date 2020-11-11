@@ -16,3 +16,20 @@ th {
   height: 80px;
   width: 80px;
 }
+.active-true {
+  border-radius: 3px;
+  text-align: center;
+  color: #ffffff;
+  width: 100px;
+  height: 24px;
+  background-color: green;
+}
+.active-false {
+  background-color: #838383;
+
+  border-radius: 3px;
+  width: 100px;
+  height: 24px;
+  color: #ffffff;
+  text-align: center;
+}

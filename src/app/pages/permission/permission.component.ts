@@ -15,16 +15,9 @@ export class PermissionComponent implements OnInit {
 
   dataList = [
     {
-      module: { type: 'text', value: 'Users' },
-      view: { type: 'check-box', value: false },
-      edit: { type: 'check-box', value: true },
-      create: { type: 'check-box', value: true },
-      delete: { type: 'check-box', value: false }
-    },
-    {
-      module: { type: 'text', value: 'Math' },
-      edit: { type: 'check-box', value: true },
-      view: { type: 'check-box', value: false },
+      module: { type: 'text', value: 'Staff' },
+      view: { type: 'check-box', value: true },
+      edit: { type: 'check-box', value: false },
       create: { type: 'check-box', value: true },
       delete: { type: 'check-box', value: false }
     }]

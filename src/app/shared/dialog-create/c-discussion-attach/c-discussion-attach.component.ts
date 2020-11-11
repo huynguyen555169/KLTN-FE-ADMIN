@@ -35,13 +35,12 @@ export class CDiscussionAttachComponent implements OnInit {
    */
   prepareFilesList(files: Array<any>) {
     for (const item of files) {
-      this.files.push(item);
       var reader = new FileReader();
-
       reader.readAsDataURL(item); // read file as data url
-
       reader.onload = (event) => { // called once readAsDataURL is completed
+        this.files.push(event.target.result)
         this.url.push(event.target.result);
+        console.log(this.url)
       }
     }
     this.filesAttach.emit(this.files);

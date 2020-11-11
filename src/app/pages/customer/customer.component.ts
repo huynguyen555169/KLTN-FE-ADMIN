@@ -26,14 +26,23 @@ export class CustomerComponent implements OnInit {
   }
 
   handleEdit(e) {
-    this.dialog.open(DialogInfoComponent, {
+    const dialogRef = this.dialog.open(DialogInfoComponent, {
       data: e
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const index = this.data.indexOf(result)
+      this.data = [...this.data]
+      if (result) {
+        this.data.splice(index, 1);
+        this.data.unshift(result);
+      }
     });
   }
   handleValueSearch(e) {
-
+    this.getData(e);
   }
   handlePageChange(e) {
+    this.getData(e)
 
   }
   getData(text?, currentPage?, sort?, type?): void {

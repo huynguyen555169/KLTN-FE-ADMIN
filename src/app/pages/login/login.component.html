@@ -21,7 +21,11 @@
                     <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
             </mat-form-field>
+            <div *ngIf="statusLogin" style="color:red">
+                Sai tài khoản hoặc mật khẩu
+            </div>
         </div>
+
         <div class="w-100 d-flex flex-row justify-content-between mb-30">
             <div>
                 <section>

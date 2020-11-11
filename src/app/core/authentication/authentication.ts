@@ -28,9 +28,9 @@ export class AuthenticationService {
   // Login and receive user info and token if success
   login(email: string, password: string) {
     // Next value for currentUserSubject and store local when login successfully
-    return this.http.post<any>(`${environment.baseUrl}/oauth/v1/token`, {
+    return this.http.post<any>(`${environment.baseUrl}employee/login`, {
       username: email,
-      password
+      password: password
     });
   }
 

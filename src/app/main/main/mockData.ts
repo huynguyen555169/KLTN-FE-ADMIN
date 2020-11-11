@@ -57,9 +57,25 @@ export const dataNav = {
     }, {
         id: 'string',
         name: 'Sales', // tên hiển thị trên sidebar
-        url: 'sale', // url để navigate
+        url: '', // url để navigate
         icon: 'view_list', // icon hiển thị (material icon)
+        children: [{
+            id: '1',
+            name: 'Order', // tên hiển thị trên sidebar
+            url: 'sale', // url để navigate
+            icon: 'view_quilt', // icon hiển thị (material icon)
+        }, {
+            id: '2',
+            name: 'Voucher', // tên hiển thị trên sidebar
+            url: 'customer', // url để navigate
+            icon: 'card_giftcard', // icon hiển thị (material icon)
+        }]
 
+    }, {
+        id: 'string',
+        name: 'Review', // tên hiển thị trên sidebar
+        url: '', // url để navigate
+        icon: 'rate_review'
     }],
     footActions: [{
         id: 'string',

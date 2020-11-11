@@ -1,6 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CSpinnerService } from 'src/app/common-module/c-spinner/c-spinner.service';
 import { FashionService } from 'src/app/core/services/api/fashion-service/fashion.service';
 import { DialogNotificationService } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.service';
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
@@ -26,13 +28,13 @@ export class DialogCreateComponent implements OnInit {
       { text: 'NO', actionValue: 2 },
     ],
   };
-  fashionCreate;
   createForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogCreateComponent>,
     private dialogNotification: DialogNotificationService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fashionService: FashionService
+    private fashionService: FashionService,
+    private spinner: CSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -67,14 +69,21 @@ export class DialogCreateComponent implements OnInit {
     });
   }
   handleSave(): void {
-    this.fashionCreate = this.createForm.value;
-    Object.assign(this.fashionCreate, { product_images: this.files });
-    console.log(this.fashionCreate)
-    this.fashionService.createFashion(this.fashionCreate).subscribe((res) => {
-      this.fashionCreate = new FashionModel(res);
-      this.dialogRef.close(this.fashionCreate);
+    let fashionCreate = this.createForm.value;
+    Object.assign(fashionCreate, { product_images: this.files });
+    const dataFashionCreate = new HttpRequestModel();
+    dataFashionCreate.body = { fashionCreate }
+    // dataFashionCreate.headers = new HttpHeaders({ 'contentType': 'multipart/form-data' })
+    this.fashionService.createFashion(dataFashionCreate).subscribe((res) => {
+      // fashionCreate = new FashionModel(res);
+      fashionCreate = res;
+      // this.dialogRef.close(fashionCreate.body.fashionCreate);
+      this.dialogRef.close(fashionCreate);
 
     })
+  }
+  handleSelect(e): void {
+    console.log(e.value)
   }
   handleCancel(): void {
     if (this.createForm.dirty) {

@@ -36,57 +36,18 @@ export const dataConfig = {
         // If not displayed, do not enter in config
         name: ' ', // Display name for action
         edit: ' ',
+        view: ' '
     }
 };
 export const data = [
     {
-        name: 1,
+        name: 'Lý Mạc Sầu',
         status: 'pending',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
+        code: 'ACB121',
+        date: '10/07/2000',
+        product: 'Áo thun cao cấp',
         price: 200000,
-    },
-    {
-        name: 1,
-        status: 'cancel',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
-        price: 200000,
-    },
-    {
-        name: 1,
-        status: 'paymentfail',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
-        price: 200000,
-    },
-    {
-        name: 1,
-        status: 'paymentsuccess',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
-        price: 200000,
-    },
-    {
-        name: 1,
-        status: 'shipping',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
-        price: 200000,
-    },
-    {
-        name: 1,
-        status: 'done',
-        code: '098.224.0061',
-        date: 'Nam',
-        product: '10/07/2000',
-        price: 200000,
-    },
+    }
 ]
 export const dataStatus = [
     { value: true, viewValue: 'Confirmed' },

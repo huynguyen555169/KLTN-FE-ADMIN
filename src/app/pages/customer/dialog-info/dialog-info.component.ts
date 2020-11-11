@@ -2,7 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CustomerService } from 'src/app/core/services/api/customer-service/customer.service';
 import { DialogNotificationService } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.service';
+import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
+import { CustomerModel } from '../customer.model';
 import { dataStatus } from '../mockData';
 
 @Component({
@@ -28,6 +31,7 @@ export class DialogInfoComponent implements OnInit {
    */
   editUserForm: FormGroup;
   constructor(
+    private customerService: CustomerService,
     private dialogNotification: DialogNotificationService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogInfoComponent>
@@ -39,20 +43,27 @@ export class DialogInfoComponent implements OnInit {
 
   initForm(): void {
     this.editUserForm = new FormGroup({
-      name: new FormControl(this.data.customer_fullname, [
+      customer_fullName: new FormControl(this.data.customer_fullName, [
       ]),
-      birthday: new FormControl(this.data.customer_birthday, [
+      customer_birthday: new FormControl(this.data.customer_birthday, [
       ]),
-      phone: new FormControl(this.data.customer_phone, [
+      customer_phone: new FormControl(this.data.customer_phone, [
       ]),
-      gender: new FormControl(this.data.customer_gender, [
+      customer_gender: new FormControl(this.data.customer_gender, [
       ]),
 
-      status: new FormControl(this.data.customer_status),
+      customer_status: new FormControl(this.data.customer_status),
     });
   }
   handleSave(): void {
-    console.log(this.editUserForm.value);
+    let customerEdit = this.editUserForm.value;
+    const dataEditUser = new HttpRequestModel();
+    dataEditUser.body = { customerEdit };
+    this.customerService.updateUser(dataEditUser).subscribe((res) => {
+      console.log(res.body.customerEdit)
+      customerEdit = new CustomerModel(res.body.customerEdit);
+      this.dialogRef.close(customerEdit);
+    })
   }
   handleCancel(): void {
     if (this.editUserForm.dirty) {

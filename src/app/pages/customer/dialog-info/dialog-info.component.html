@@ -12,9 +12,9 @@
             <div>
                 <div class="dialog-title">Phone</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="phone" />
+                    <input matInput formControlName="customer_phone" />
                     <mat-error>{{
-              editUserForm.controls["phone"].errors?.message
+              editUserForm.controls["customer_phone"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
@@ -23,18 +23,18 @@
             <div class="pr-18">
                 <div class="dialog-title">Name</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="name" />
+                    <input matInput formControlName="customer_fullName" />
                     <mat-error>{{
-              editUserForm.controls["name"].errors?.message
+              editUserForm.controls["customer_fullName"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
                 <div class="dialog-title">Gender</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="gender" />
+                    <input matInput formControlName="customer_gender" />
                     <mat-error>{{
-              editUserForm.controls["gender"].errors?.message
+              editUserForm.controls["customer_gender"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
@@ -43,16 +43,16 @@
             <div class="pr-18">
                 <div class="dialog-title">Birthday</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="birthday" placeholder="" />
+                    <input matInput formControlName="customer_birthday" placeholder="" />
                     <mat-error>{{
-              editUserForm.controls["birthday"].errors?.message
+              editUserForm.controls["customer_birthday"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
                 <div class="dialog-title">Status</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <mat-select name="gender" formControlName="status">
+                    <mat-select name="gender" formControlName="customer_status">
                         <mat-option *ngFor="let i of status" [value]="i.value">
                             {{ i.viewValue }}
                         </mat-option>

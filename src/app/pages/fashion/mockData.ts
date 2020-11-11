@@ -30,16 +30,16 @@ export const data: FashionModel[] = [
 ];
 export const typeData = [
 
-    { type: 'shose', viewType: 'shose' },
-    { type: 'fashion', viewType: 'fashion' },
-    { type: 'watch', viewType: 'watch' },
+    { product_type_id: 1, product_type_name: 'Shose' },
+    { product_type_id: 2, product_type_name: 'Fashion' },
+    { product_type_id: 3, product_type_name: 'Watch' },
 
 ]
 export const sizeData = [
 
-    { size: '27', viewSize: '27' },
-    { size: '28', viewSize: '28' },
-    { size: '29', viewSize: '39' },
+    { product_size_id: '27', product_size_title: '27' },
+    { product_size_id: '28', product_size_title: '28' },
+    { product_size_id: '29', product_size_title: '39' },
 
 
 ]

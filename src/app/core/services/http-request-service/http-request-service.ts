@@ -37,7 +37,7 @@ export class HttpRequestService {
         return this.http.delete<any>(url, deleteOption);
     }
 
-    post(url: string, body?: any, params?: {}, headers?: HttpHeaders): any {
+    post(url: string, params?: {}, body?: any, headers?: HttpHeaders): any {
         const postOption = new HttpRequestOption();
         postOption.params = this.transformParamToHttpParams(params);
 
@@ -47,7 +47,7 @@ export class HttpRequestService {
         return this.http.post<any>(url, body, postOption);
     }
 
-    put(url: string, body?: any, params?: {}, headers?: HttpHeaders): any {
+    put(url: string, params?: {}, body?: any, headers?: HttpHeaders): any {
         const putOption = new HttpRequestOption();
         putOption.params = this.transformParamToHttpParams(params);
 

@@ -29,10 +29,10 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.data);
+    console.log(this.dataSource)
 
   }
   ngOnInit(): void {
-
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

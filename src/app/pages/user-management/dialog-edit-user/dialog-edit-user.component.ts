@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from 'src/app/core/services/api/user-service/user.service';
 import { DialogNotificationService } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.service';
+import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 import { CustomValidator } from 'src/app/core/validate-service/custom-validator';
 
 import { dataRole } from '../mockData';
@@ -16,7 +17,6 @@ import { UserModel } from '../user.model';
 export class DialogEditUserComponent implements OnInit {
   hide = true;
   roles = dataRole;
-  user;
 
   param = {
     title: 'Thông báo',
@@ -65,12 +65,13 @@ export class DialogEditUserComponent implements OnInit {
     });
   }
   handleEdit(): void {
-    this.user = this.editUserForm.value;
-    this.userService.updateUser(this.user).subscribe(
+    let user = this.editUserForm.value;
+    const dataEditUser = new HttpRequestModel()
+    dataEditUser.body = { user }
+    this.userService.updateUser(dataEditUser).subscribe(
       (res) => {
-        console.log(res);
-        this.user = new UserModel(res);
-        this.dialogRef.close(this.user);
+        user = new UserModel(res.body.user);
+        this.dialogRef.close(user);
       },
       (error) => {
         console.log('error');

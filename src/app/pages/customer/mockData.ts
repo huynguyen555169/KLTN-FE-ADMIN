@@ -2,7 +2,7 @@ export const dataConfig = {
     columns: [
         {
             displayName: 'Name', // Dislay name in header
-            value: 'customer_fullname',
+            value: 'customer_fullName',
             sort: true, // Option sort header
         },
         {

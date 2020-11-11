@@ -12,4 +12,7 @@ export class CustomerService {
   getListCustomer(parram: any): Observable<any> {
     return of(data);
   }
+  updateUser(parram: any): Observable<any> {
+    return of(parram);
+  }
 }

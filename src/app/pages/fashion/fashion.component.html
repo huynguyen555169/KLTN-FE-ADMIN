@@ -9,12 +9,12 @@
         <app-search (valueSearch)="handleValueSearch($event)" [placeholder]="placeholder"></app-search>
     </div>
     <div class="d-flex pt-3 pb-3">
-        <button mat-raised-button *ngFor="let type of typeFashion" class="mr-3 custom-btn"
+        <button mat-raised-button *ngFor="let type of typeData" class="mr-3 custom-btn"
             (click)="handleTypeFashion(type)">{{type.value}}</button>
 
     </div>
     <div class="pb-5">
-        <app-table-one [data]="data" (itemEdit)="handleItemEdit($event)"></app-table-one>
+        <app-table-one [data]="data.data" (itemEdit)="handleItemEdit($event)"></app-table-one>
 
     </div>
     <div class="pagi w-100 text-center">

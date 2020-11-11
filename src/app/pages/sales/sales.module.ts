@@ -13,12 +13,13 @@ import { TableClassicModule } from 'src/app/common-module/table-package/table-cl
 import { PaginationModule } from 'src/app/shared/pagination/pagination.module';
 import { SearchModule } from 'src/app/shared/search/search.module';
 import { TableCheckModule } from 'src/app/common-module/table-package/table-check/table-check.module';
+import { EditOrderComponent } from './edit-order/edit-order.component';
 
 
 
 
 @NgModule({
-  declarations: [SalesComponent],
+  declarations: [SalesComponent, EditOrderComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,

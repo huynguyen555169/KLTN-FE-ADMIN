@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FashionService } from 'src/app/core/services/api/fashion-service/fashion.service';
 import { DialogNotificationService } from 'src/app/core/services/app-services/dialog-notification-service/dialog-notification.service';
+import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 import { CustomValidator } from 'src/app/core/validate-service/custom-validator';
 import { FashionModel } from 'src/app/pages/fashion/fashion.model';
 
@@ -16,15 +17,14 @@ export class CardEditComponent implements OnInit {
   roles;
   files;
   param = {
-    title: 'キャンセル確認',
+    title: 'Thông báo',
     message:
-      'キャンセルを押したら、保存できません。キャンセルにも宜しいですか。',
+      'Bạn có muốn lưu',
     buttons: [
       { text: 'YES', actionValue: 1 },
       { text: 'NO', actionValue: 2 },
     ],
   };
-  fashionEdit;
   createForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<CardEditComponent>,
@@ -39,6 +39,7 @@ export class CardEditComponent implements OnInit {
   }
   initForm(): void {
     this.createForm = new FormGroup({
+      product_id: new FormControl(this.data.data.product_id),
       product_qty: new FormControl(this.data.data.product_qty, [
         CustomValidator.required,
         CustomValidator.maxLength(10),
@@ -67,12 +68,17 @@ export class CardEditComponent implements OnInit {
     });
   }
   handleSave(): void {
-    this.fashionEdit = this.createForm.value;
-    Object.assign(this.fashionEdit, { product_images: this.data.data.product_images });
-    console.log(this.fashionEdit)
-    this.fashionService.updateFashion(this.fashionEdit).subscribe((res) => {
-      this.fashionEdit = new FashionModel(res);
-      this.dialogRef.close(this.fashionEdit);
+
+    let fashionEdit = this.createForm.value;
+    Object.assign(fashionEdit, { product_images: this.data.data.product_images });
+    const dataFashionEdit = new HttpRequestModel();
+    dataFashionEdit.body = { fashionEdit }
+    console.log(dataFashionEdit)
+    this.fashionService.updateFashion(dataFashionEdit).subscribe((res) => {
+      fashionEdit = res;
+      console.log(res)
+      // this.dialogRef.close(fashionEdit.body.fashionEdit);
+      this.dialogRef.close(fashionEdit);
     })
   }
   handleCancel(): void {
