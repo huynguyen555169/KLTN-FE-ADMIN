@@ -6,6 +6,7 @@ import { DialogNotificationService } from 'src/app/core/services/app-services/di
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 import { CustomValidator } from 'src/app/core/validate-service/custom-validator';
 import { FashionModel } from 'src/app/pages/fashion/fashion.model';
+import { CSpinnerService } from '../../c-spinner/c-spinner.service';
 
 @Component({
   selector: 'app-card-edit',
@@ -30,7 +31,7 @@ export class CardEditComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<CardEditComponent>,
     private dialogNotification: DialogNotificationService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private fashionService: FashionService) {
+    private fashionService: FashionService, private spinner: CSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -68,18 +69,20 @@ export class CardEditComponent implements OnInit {
     });
   }
   handleSave(): void {
-
+    this.spinner.show()
     let fashionEdit = this.createForm.value;
     Object.assign(fashionEdit, { product_images: this.data.data.product_images });
     const dataFashionEdit = new HttpRequestModel();
     dataFashionEdit.body = { fashionEdit }
     console.log(dataFashionEdit)
     this.fashionService.updateFashion(dataFashionEdit).subscribe((res) => {
+      this.spinner.hide()
       fashionEdit = res;
       console.log(res)
       // this.dialogRef.close(fashionEdit.body.fashionEdit);
       this.dialogRef.close(fashionEdit);
     })
+
   }
   handleCancel(): void {
     if (this.createForm.dirty) {

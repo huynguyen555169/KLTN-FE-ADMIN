@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/core/services/api/customer-service/customer.service';
+import { SpinnerService } from 'src/app/core/services/app-services/spinner-service/spinner.service';
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 import { CustomerModel } from './customer.model';
 import { DialogInfoComponent } from './dialog-info/dialog-info.component';
@@ -19,7 +20,7 @@ export class CustomerComponent implements OnInit {
   currentPage = 1;
   dataConfig = dataConfig;
   placeholder = 'Nhập tên bạn muốn tìm kiếm'
-  constructor(public dialog: MatDialog, private customerService: CustomerService) { }
+  constructor(public dialog: MatDialog, private customerService: CustomerService, private spinner: SpinnerService) { }
 
   ngOnInit(): void {
     this.getData()
@@ -39,13 +40,29 @@ export class CustomerComponent implements OnInit {
     });
   }
   handleValueSearch(e) {
-    this.getData(e);
+    const dataGetListCustomer = new HttpRequestModel();
+    dataGetListCustomer.params = { search: e };
+    this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
+      this.data = item
+    }, (error) => {
+      console.log('lỗi')
+    })
+    // this.getData(e);
   }
   handlePageChange(e) {
-    this.getData(e)
+    const dataGetListCustomer = new HttpRequestModel();
+    dataGetListCustomer.params = { currentPage: e };
+    this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
+      this.data = item
+    }, (error) => {
+      console.log('lỗi')
+    })
+    // this.getData(e)
 
   }
   getData(text?, currentPage?, sort?, type?): void {
+    this.spinner.show()
+
     const dataGetListCustomer = new HttpRequestModel();
     dataGetListCustomer.params = {};
     if (currentPage) {
@@ -65,7 +82,7 @@ export class CustomerComponent implements OnInit {
       }
     }
     this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
-      this.data = item.map(e => new CustomerModel(e))
+      this.data = item
       console.log(this.data)
     })
     this.keyword = text ? text : '';

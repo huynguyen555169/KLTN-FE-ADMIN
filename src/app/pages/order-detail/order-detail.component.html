@@ -1,0 +1,117 @@
+<div class="order--header w-100 px-3  d-flex align-items-center">
+    <div class="order-btn--back">
+        <button mat-icon-button (click)="goBackOrder()">
+            <span class="material-icons">
+                keyboard_backspace
+            </span>
+        </button>
+
+    </div>
+    <div class="order-btn--title">
+        Đơn hàng {{codeOrder}}
+    </div>
+</div>
+<div class="order-content">
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Order Details">
+
+            <div class="mt-4 d-flex align-items-center" style="color:#757575">
+                <span class="material-icons pr-2">
+                    account_circle
+                </span>
+                Customer
+            </div>
+            <div class="pl-4 pt-4" style="color:#757580">
+                <app-table-info [headers]="headers" [dataList]="dataList"></app-table-info>
+            </div>
+            <div class="mt-4 d-flex align-items-center" style="color:#757575">
+                <span class="material-icons pr-2">
+                    schedule
+                </span>
+                Order Status
+            </div>
+            <div class="pl-4 pt-4" style="color:#757580">
+                <app-table-info [headers]="header1s" [dataList]="dataList1"></app-table-info>
+            </div>
+
+            <div class="mt-4 d-flex align-items-center" style="color:#757575">
+                <span class="material-icons">
+                    attach_money
+                </span>
+                Payment
+            </div>
+            <div class="pl-4 pt-4" style="color:#757580">
+                <app-table-info [headers]="header2s" [dataList]="dataPayment"></app-table-info>
+            </div>
+            <div class="mt-4 d-flex align-items-center" style="color:#757575">
+                <span class="material-icons">
+                    local_shipping
+                </span>
+                Shipping
+            </div>
+            <div class="pl-4 pt-4" style="color:#757580">
+                <app-table-info [headers]="header2s" [dataList]="dataPayment"></app-table-info>
+            </div>
+        </mat-tab>
+        <mat-tab label="Products">
+            <div class="pt-4 pl-4 pr-4">
+                <app-table-info [headers]="header3s" [dataList]="dataProduct"></app-table-info>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Invoice">
+            <div class="header-invoice w-100 p-4 d-flex">
+                <div class="invoice--left w-50">
+                    <div class="left--date">
+                        20/2/2020
+                    </div>
+                    <div class="left--adress">
+                        HCM City
+                    </div>
+                </div>
+                <img src="../../../assets/images/Group 1.png" alt="" class="invoice--right">
+            </div>
+            <div class="">
+                <app-table-info [headers]="header4s" [dataList]="dataProductTotal"></app-table-info>
+            </div>
+            <div class="p-3" style="color: #757575;">
+                <div class="d-flex justify-content-between pb-3">
+                    <div class="">
+                        SUBTOTAL
+                    </div>
+                    <div class="">
+                        $39.97
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between pb-3">
+                    <div class="">
+                        TAX
+                    </div>
+                    <div class="">
+                        $77.44
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between pb-3">
+                    <div class="">
+                        DISCOUNT
+                    </div>
+                    <div class="">
+                        --$10.17
+                    </div>
+                </div>
+            </div>
+            <div class="line-division">
+
+            </div>
+            <div class="d-flex justify-content-between p-3" style="font-size:30px">
+                <div class="">
+                    TOTAL
+                </div>
+                <div class="">
+                    $10.17
+                </div>
+            </div>
+
+        </mat-tab>
+    </mat-tab-group>
+</div>

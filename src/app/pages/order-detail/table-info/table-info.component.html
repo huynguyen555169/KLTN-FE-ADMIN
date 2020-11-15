@@ -1,0 +1,35 @@
+<div class="table-check-container d-flex flex-column">
+    <div class="table-wrapper d-flex flex-column">
+        <div class="table-row row-header">
+            <div class="table-cell" *ngFor="let header of headers">
+                {{ header.value }}
+            </div>
+        </div>
+        <div class="table-body-wrapper">
+            <ng-container *ngIf="isArray(dataList)">
+                <div class="table-row table-body pb-2" *ngFor="let data of dataList"
+                    style="border-bottom:1px solid #E0E0E0;">
+                    <div class="table-cell" *ngFor="let cell of objectKeys(data); let i = index">
+                        <span class="" *ngIf="cell === 'image'; else elseBlock ">
+                            <img src="{{ data[headers[i].key] }}" alt="" style="width: 100px;height: 100px;">
+
+                        </span>
+                        <ng-template #elseBlock>{{ data[headers[i].key] }}</ng-template>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!isArray(dataList)">
+                <div class="table-row table-body">
+                    <div class="table-cell" *ngFor="let cell of objectKeys(dataList); let i = index">
+                        <span class="" *ngIf="cell === 'image'; else elseBlock ">
+                            <img src="{{ dataList[headers[i].key] }}" alt="" style="width: 100px;height: 100px;">
+
+                        </span>
+                        <ng-template #elseBlock>{{ dataList[headers[i].key] }}</ng-template>
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

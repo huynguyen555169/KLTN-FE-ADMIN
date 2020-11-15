@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CSpinnerService } from 'src/app/common-module/c-spinner/c-spinner.service';
 import { CardEditComponent } from 'src/app/common-module/card-package/card-edit/card-edit.component';
 import { FashionService } from 'src/app/core/services/api/fashion-service/fashion.service';
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
@@ -14,11 +15,12 @@ export class FashionComponent implements OnInit {
   sort;
   data: any;
   typeData: any;
+  clearSort = false;
   sizeData: any;
   keyword: string;
   currentPage = 1;
   placeholder = 'Bạn muốn tìm kiếm gì?'
-  constructor(public dialog: MatDialog, private fashionService: FashionService) { }
+  constructor(public dialog: MatDialog, private fashionService: FashionService, private spinner: CSpinnerService) { }
 
   ngOnInit(): void {
     let dataGetType = new HttpRequestModel();
@@ -37,29 +39,42 @@ export class FashionComponent implements OnInit {
       data: { typeData: this.typeData, sizeData: this.sizeData },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      this.data.data = [...this.data.data]
-      if (result) {
-        this.data.data.unshift(result.data);
-        console.log(this.data.data)
-      }
+      this.getData()
     });
   }
   handleTypeFashion(type) {
-    this.getData(type)
+    this.spinner.show()
+    // this.getData(type.product_type_id)
+    const dataGetListFashion = new HttpRequestModel();
+    dataGetListFashion.params = { type: type.product_type_id };
+    this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.data = item
+      this.spinner.hide()
+    }, (error) => {
+      console.log('lỗi')
+    })
   }
+  handleSort(e) {
+    console.log(e)
+    const dataGetListFashion = new HttpRequestModel();
+    dataGetListFashion.params = { sort: e.direction };
+    this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.data = item
+    }, (error) => {
+      console.log('lỗi')
+    })
+  }
+
   handleItemEdit(e) {
     const dialogRef = this.dialog.open(CardEditComponent, {
       disableClose: true,
       data: { data: e, typeData: this.typeData, sizeData: this.sizeData },
     });
     dialogRef.afterClosed().subscribe(result => {
-      let x = this.data.data.findIndex(x => x.product_id === result.product.product_id)
-      this.data.data = [...this.data.data];
-      this.data.data.splice(x, 1);
-      this.data.data.unshift(result.product)
-      console.log(result.product)
-
+      console.log(result)
+      if (result.message === "Update sản phẩm thành công!") {
+        this.getData()
+      }
     });
   }
 
@@ -76,22 +91,22 @@ export class FashionComponent implements OnInit {
   }
   handleValueSearch(e) {
     // this.getData(e)
+    this.spinner.show()
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = { search: e };
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.data = item
+      this.spinner.hide()
     }, (error) => {
       console.log('lỗi')
     })
     // this.getData(e);
   }
   getData(text?, currentPage?, sort?, type?): void {
+    this.spinner.show()
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = {};
 
-    // if (currentPage) {
-    //   Object.assign(dataGetListFashion.params, { currentPage: currentPage });
-    // }
     if (text) {
       Object.assign(dataGetListFashion.params, { search: text });
     }
@@ -106,7 +121,9 @@ export class FashionComponent implements OnInit {
       }
     }
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.spinner.hide()
       this.data = item
+
     }, (error) => {
       console.log('lỗi')
     })

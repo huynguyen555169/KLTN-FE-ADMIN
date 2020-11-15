@@ -3,10 +3,7 @@
     arrow_right_alt
   </span>
   <div class="main-content d-flex flex-column" [ngStyle]="{ width: width + 'px' }">
-    <div class="user-info d-flex flex-column align-items-center not-hide" [ngStyle]="{
-        background:
-          'url(' + data.backgroundUserImage + ') center/cover no-repeat'
-      }">
+    <div class="user-info d-flex flex-column align-items-center not-hide">
       <img [src]="data.userInfo.avatar" alt="User avater" class="not-hide" />
       <span class="user-name">{{ data.userInfo.fullName }}</span>
       <span class="user-email" *ngIf="data.userInfo.email">

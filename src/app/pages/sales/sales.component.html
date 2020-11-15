@@ -5,7 +5,8 @@
 
     </div>
 
-    <app-table-classic [clearSort]="clearSort" [tableConfig]="dataConfig" [data]="data" (editData)="handleEdit($event)">
+    <app-table-classic [clearSort]="clearSort" [tableConfig]="dataConfig" [data]="data" (editData)="handleEdit($event)"
+        (viewDetailData)="handleView($event)">
     </app-table-classic>
     <div class="pagi w-100 text-center">
         <app-pagination [currentPage]="'1'" [totalPage]="'9'" (pageChange)="handlePageChange($event)"></app-pagination>

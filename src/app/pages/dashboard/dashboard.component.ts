@@ -100,9 +100,28 @@ export class DashboardComponent implements OnInit {
   public pieChartType = 'pie';
   public pieChartLabels = ['New', 'Continue', 'Log Out'];
 
+  date = new Date();
+  weekday = new Array(7);
+  today;
+  time;
+  day;
+
+
   constructor() { }
 
   ngOnInit(): void {
+    this.weekday[0] = "Sunday";
+    this.weekday[1] = "Monday";
+    this.weekday[2] = "Tuesday";
+    this.weekday[3] = "Wednesday";
+    this.weekday[4] = "Thursday";
+    this.weekday[5] = "Friday";
+    this.weekday[6] = "Saturday";
+    this.today = this.weekday[this.date.getDay()]
+    this.time = this.date.toLocaleTimeString();
+    this.day = this.date.toDateString();
   }
+
+
 
 }

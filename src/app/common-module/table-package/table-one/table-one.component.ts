@@ -16,7 +16,9 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: any;
+  @Input() clearSort;
   @Output() itemEdit = new EventEmitter<string>();
+  @Output() isSort = new EventEmitter<any>();
   displayedColumns: string[] = ['product_images', 'product_name', 'product_unit_price', 'product_qty', 'product_type_fk', 'product_status', 'action'];
   dataSource: MatTableDataSource<any>;
 
@@ -30,6 +32,9 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.data);
     console.log(this.dataSource)
+    if (changes.clearSort && !changes.clearSort.isFirstChange()) {
+      this.clearSortHeader();
+    }
 
   }
   ngOnInit(): void {
@@ -42,8 +47,15 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
       this.dataSource.paginator.firstPage();
     }
   }
+  handleSortChange(e): void {
+    this.isSort.emit(e);
+  }
   handleEdit(e) {
     this.itemEdit.emit(e)
 
   }
+  clearSortHeader(): any {
+    this.sort.sort({ id: '', start: 'asc', disableClear: false });
+  }
 }
+

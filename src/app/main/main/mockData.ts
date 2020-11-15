@@ -37,22 +37,24 @@ export const dataNav = {
         name: 'User', // tên hiển thị trên sidebar
         url: '', // url để navigate
         icon: 'supervisor_account', // icon hiển thị (material icon)
-        children: [{
-            id: '1',
-            name: 'Customer', // tên hiển thị trên sidebar
-            url: 'customer', // url để navigate
-            icon: 'face', // icon hiển thị (material icon)
-        }, {
-            id: '2',
-            name: 'Staff', // tên hiển thị trên sidebar
-            url: 'staff', // url để navigate
-            icon: 'face', // icon hiển thị (material icon)
-        }, {
-            id: 'e',
-            name: 'Permission', // tên hiển thị trên sidebar
-            url: 'permission', // url để navigate
-            icon: 'face', // icon hiển thị (material icon)
-        }]
+        children: [
+            //     {
+            //     id: '1',
+            //     name: 'Customer', // tên hiển thị trên sidebar
+            //     url: 'customer', // url để navigate
+            //     icon: 'face', // icon hiển thị (material icon)
+            // }, {
+            //     id: '2',
+            //     name: 'Staff', // tên hiển thị trên sidebar
+            //     url: 'staff', // url để navigate
+            //     icon: 'face', // icon hiển thị (material icon)
+            // }, {
+            //     id: 'e',
+            //     name: 'Permission', // tên hiển thị trên sidebar
+            //     url: 'permission', // url để navigate
+            //     icon: 'face', // icon hiển thị (material icon)
+            // }
+        ]
 
     }, {
         id: 'string',
@@ -80,7 +82,7 @@ export const dataNav = {
     footActions: [{
         id: 'string',
         name: 'Logout', // tên hiển thị trên sidebar
-        url: 'login', // url để navigate
+        url: 'logout', // url để navigate
         icon: 'exit_to_app', // icon hiển thị (material icon)
 
     }]

@@ -6,6 +6,7 @@ import { DialogNotificationService } from 'src/app/core/services/app-services/di
 import { UserService } from 'src/app/core/services/api/user-service/user.service';
 import { CustomValidator } from 'src/app/core/validate-service/custom-validator';
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
+import { CSpinnerService } from 'src/app/common-module/c-spinner/c-spinner.service';
 
 
 @Component({
@@ -16,6 +17,10 @@ import { HttpRequestModel } from 'src/app/core/services/http-request-service/htt
 export class DialogCreateUserComponent implements OnInit {
   hide = true;
   roles;
+  gender = [
+    { value: 'Nam', viewValue: 'Nam' },
+    { value: 'Nữ', viewValue: 'Nữ' }
+  ];
   param = {
     title: 'キャンセル確認',
     message:
@@ -30,7 +35,8 @@ export class DialogCreateUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogCreateUserComponent>,
     private dialogNotification: DialogNotificationService,
-    private userService: UserService
+    private userService: UserService,
+    private spinner: CSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -40,38 +46,37 @@ export class DialogCreateUserComponent implements OnInit {
   }
   initForm(): void {
     this.createUserForm = new FormGroup({
-      userId: new FormControl('', [
+      employee_userName: new FormControl('', [
         CustomValidator.required,
         CustomValidator.maxLength(10),
       ]),
-      userName: new FormControl('', [
+      employee_fullName: new FormControl('', [
         CustomValidator.required,
         CustomValidator.maxLength(32),
       ]),
-      password: new FormControl('', [
+
+      employee_password: new FormControl('', [
         CustomValidator.required,
         CustomValidator.rangeLength(8, 16),
       ]),
-      email: new FormControl('', [
-        CustomValidator.email,
-        CustomValidator.required,
-        CustomValidator.maxLength(64),
-      ]),
-      phone: new FormControl('', [
+      employee_phone: new FormControl('', [
         CustomValidator.required,
         CustomValidator.rangeLength(10, 12),
       ]),
-      roleId: new FormControl(this.roles[0]),
+      employee_role: new FormControl(this.roles[0]),
+      employee_gender: new FormControl('')
     });
   }
   handleSave(): void {
+    this.spinner.show()
     let user = this.createUserForm.value;
     const dataCreateUser = new HttpRequestModel()
     dataCreateUser.body = { user }
     this.userService.createUser(dataCreateUser).subscribe(
       (res) => {
-        user = new UserModel(res.body.user);
-        this.dialogRef.close(user);
+        // user = new UserModel(res.body.user);
+        this.spinner.hide()
+        this.dialogRef.close(res);
       },
       (error) => {
         console.log('error');

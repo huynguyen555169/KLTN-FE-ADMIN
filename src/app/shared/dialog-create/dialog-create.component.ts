@@ -69,12 +69,14 @@ export class DialogCreateComponent implements OnInit {
     });
   }
   handleSave(): void {
+    this.spinner.show()
     let fashionCreate = this.createForm.value;
     Object.assign(fashionCreate, { product_images: this.files });
     const dataFashionCreate = new HttpRequestModel();
     dataFashionCreate.body = { fashionCreate }
     // dataFashionCreate.headers = new HttpHeaders({ 'contentType': 'multipart/form-data' })
     this.fashionService.createFashion(dataFashionCreate).subscribe((res) => {
+      this.spinner.hide()
       // fashionCreate = new FashionModel(res);
       fashionCreate = res;
       // this.dialogRef.close(fashionCreate.body.fashionCreate);
@@ -98,6 +100,7 @@ export class DialogCreateComponent implements OnInit {
   }
   handleFile(e) {
     this.files = e;
+    console.log(this.files)
   }
 
 }

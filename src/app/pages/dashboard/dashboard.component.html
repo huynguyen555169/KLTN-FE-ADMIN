@@ -1,63 +1,81 @@
 <div class="chart-container">
-    <div class="chart-line">
-        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [chartType]="lineChartType"
-            [options]="optionsLine"></canvas>
+    <div class="row">
+        <div class="chart-line col-10">
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [chartType]="lineChartType"
+                [options]="optionsLine"></canvas>
+        </div>
+        <div class="col-2">
+            <div class="calendar text-center mt-2">
+                <div style="font-size: 16px;" class="pt-5">
+                    {{time}}
+                </div>
+                <div class="pt-3" style="line-height: 100%; text-align: center;">
+                    {{day}}
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="chart-circle">
-        <div class="chart-circle-one w-40">
-            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-                [options]="optionsDoughnut"></canvas>
-            <div class="chart-two-content-container py-3">
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50">
-                        <span class="material-icons"> phone </span>
-                        {{ doughnutChartLabels[0] }}
+    <div class="row">
+        <div class="chart-circle col-10">
+            <div class="chart-circle-one w-40">
+                <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType" [options]="optionsDoughnut"></canvas>
+                <div class="chart-two-content-container py-3">
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50">
+                            <span class="material-icons"> phone </span>
+                            {{ doughnutChartLabels[0] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ doughnutChartData[0] }}%</div>
                     </div>
-                    <div class="chart-content-value w-50">{{ doughnutChartData[0] }}%</div>
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50">
+                            <span class="material-icons"> desktop_windows </span>
+                            {{ doughnutChartLabels[1] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ doughnutChartData[1] }}%</div>
+                    </div>
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50">
+                            <span class="material-icons"> tablet_android </span>
+                            {{ doughnutChartLabels[2] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ doughnutChartData[2] }}%</div>
+                    </div>
                 </div>
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50">
-                        <span class="material-icons"> desktop_windows </span>
-                        {{ doughnutChartLabels[1] }}
+            </div>
+            <div class="chart-circle-two w-40">
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                    [options]="optionsPie"></canvas>
+                <div class="chart-two-content-container py-3">
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50">
+                            <span style="color: #b8445d" class="material-icons"> fiber_manual_record </span>
+                            {{ pieChartLabels[0] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ pieChartData[0] }}</div>
                     </div>
-                    <div class="chart-content-value w-50">{{ doughnutChartData[1] }}%</div>
-                </div>
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50">
-                        <span class="material-icons"> tablet_android </span>
-                        {{ doughnutChartLabels[2] }}
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50 d-flex align-items-center">
+                            <span style="color: #227cb8" class="material-icons"> fiber_manual_record </span>
+                            {{ pieChartLabels[1] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ pieChartData[1] }}</div>
                     </div>
-                    <div class="chart-content-value w-50">{{ doughnutChartData[2] }}%</div>
+                    <div class="chart-two-content d-flex">
+                        <div class="chart-content-title ml-5 w-50">
+                            <span style="color: #b8953e" class="material-icons"> fiber_manual_record </span>
+                            {{ pieChartLabels[2] }}
+                        </div>
+                        <div class="chart-content-value w-50">{{ pieChartData[2] }}</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="chart-circle-two w-40">
-            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-                [options]="optionsPie"></canvas>
-            <div class="chart-two-content-container py-3">
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50">
-                        <span style="color: #b8445d" class="material-icons"> fiber_manual_record </span>
-                        {{ pieChartLabels[0] }}
-                    </div>
-                    <div class="chart-content-value w-50">{{ pieChartData[0] }}</div>
-                </div>
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50 d-flex align-items-center">
-                        <span style="color: #227cb8" class="material-icons"> fiber_manual_record </span>
-                        {{ pieChartLabels[1] }}
-                    </div>
-                    <div class="chart-content-value w-50">{{ pieChartData[1] }}</div>
-                </div>
-                <div class="chart-two-content d-flex">
-                    <div class="chart-content-title ml-5 w-50">
-                        <span style="color: #b8953e" class="material-icons"> fiber_manual_record </span>
-                        {{ pieChartLabels[2] }}
-                    </div>
-                    <div class="chart-content-value w-50">{{ pieChartData[2] }}</div>
-                </div>
-            </div>
+        <div class="col-2">
+
         </div>
     </div>
+
 </div>

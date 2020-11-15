@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { data, dataConfig } from './mockData';
 
@@ -13,7 +14,7 @@ export class SalesComponent implements OnInit {
   clearSort = false;
   dataConfig = dataConfig
   placeholder = 'Nhập tên bạn muốn tìm kiếm'
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,9 @@ export class SalesComponent implements OnInit {
   }
   handlePageChange(e) {
 
+  }
+  handleView(e) {
+    this.router.navigate(['/detail-order'])
   }
 
 }

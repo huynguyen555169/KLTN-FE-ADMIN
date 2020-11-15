@@ -112,8 +112,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('currentUser', JSON.stringify(res));
         this.authentication.currentUserSubject.next(res);
         this.router.navigate(['/dashboard']);
+        // this.router.navigate(['/dashboard'], { state: { example: 'bar' } });
       }, () => {
         this.statusLogin = true;
+        this.spinner.hide();
       });
     }
   }

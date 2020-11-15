@@ -34,17 +34,18 @@ export class CDiscussionAttachComponent implements OnInit {
    * @param files (Files List)
    */
   prepareFilesList(files: Array<any>) {
+    const formData = new FormData();
     for (const item of files) {
+      // formData.append('file', item)
+      // this.files.push(formData)
       var reader = new FileReader();
       reader.readAsDataURL(item); // read file as data url
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.files.push(event.target.result)
         this.url.push(event.target.result);
-        console.log(this.url)
       }
     }
     this.filesAttach.emit(this.files);
-    console.log(this.url)
 
   }
 

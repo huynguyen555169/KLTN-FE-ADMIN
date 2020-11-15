@@ -8,6 +8,8 @@ import { TableOneModule } from './common-module/table-package/table-one/table-on
 import { MenuTwoModule } from './common-module/menu-package/menu-two/menu-two.module';
 import { MenuThreeModule } from './common-module/menu-package/menu-three/menu-three.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CSpinnerModule } from './common-module/c-spinner/c-spinner.module';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     TableOneModule,
     MenuTwoModule,
     MenuThreeModule,
-    HttpClientModule
+    HttpClientModule,
+    CSpinnerModule,
 
   ],
   providers: [],

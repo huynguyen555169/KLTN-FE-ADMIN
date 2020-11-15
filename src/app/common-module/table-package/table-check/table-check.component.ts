@@ -36,12 +36,12 @@ export class TableCheckComponent implements OnInit, OnChanges {
 
   dataReset;
   isEdit = false;
-  constructor() {}
+  constructor() { }
 
   objectKeys = Object.keys;
   checkChangedList = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (

@@ -10,11 +10,12 @@
     </div>
     <div class="d-flex pt-3 pb-3">
         <button mat-raised-button *ngFor="let type of typeData" class="mr-3 custom-btn"
-            (click)="handleTypeFashion(type)">{{type.value}}</button>
+            (click)="handleTypeFashion(type)">{{type.product_type_name}}</button>
 
     </div>
     <div class="pb-5">
-        <app-table-one [data]="data.data" (itemEdit)="handleItemEdit($event)"></app-table-one>
+        <app-table-one [data]="data.data" [clearSort]="clearSort" (itemEdit)="handleItemEdit($event)"
+            (isSort)="handleSort($event)"></app-table-one>
 
     </div>
     <div class="pagi w-100 text-center">

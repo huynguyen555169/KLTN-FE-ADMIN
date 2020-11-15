@@ -19,7 +19,7 @@ export class UserManagementComponent implements OnInit {
   roles: any;
   currentPage = 1;
   sort;
-  placeholder = 'aaaa';
+  placeholder = 'Tìm kiếm';
   constructor(
     public dialog: MatDialog,
     private userManagementService: UserService
@@ -27,8 +27,10 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
-    this.userManagementService.getRole().subscribe((res) => {
+    let dataGetRole = new HttpRequestModel();
+    this.userManagementService.getRole(dataGetRole).subscribe((res) => {
       this.roles = res;
+      console.log(this.roles)
     });
   }
 
@@ -39,10 +41,7 @@ export class UserManagementComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.users = [...this.users];
-        this.users.unshift(result);
-      }
+      this.getData()
     });
   }
 
@@ -54,7 +53,10 @@ export class UserManagementComponent implements OnInit {
   handleEditData(item): void {
     const dialogRef = this.dialog.open(DialogEditUserComponent, {
       disableClose: true,
-      data: item,
+      data: {
+        data: item,
+        roles: this.roles
+      },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -92,6 +94,8 @@ export class UserManagementComponent implements OnInit {
     }
     this.userManagementService.getListUser(dataGetListUser).subscribe((res) => {
       this.users = res;
+      console.log(this.users)
+      console.log(this.dataConfig)
     });
     this.keyword = text ? text : '';
     this.currentPage = currentPage ? currentPage : 1;

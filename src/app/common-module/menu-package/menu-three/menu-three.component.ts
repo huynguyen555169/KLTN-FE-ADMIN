@@ -14,6 +14,7 @@ import {
 })
 export class MenuThreeComponent implements OnInit, OnChanges {
   expanded: boolean;
+  @Input() dataUser: any;
   @Input() data: {
     backgroundUserImage?: string;
     userInfo: any;
@@ -22,15 +23,16 @@ export class MenuThreeComponent implements OnInit, OnChanges {
   };
 
   @Input() width: number;
-  constructor() {}
+  constructor() { }
 
   isOpen = true;
 
   ngOnInit(): void {
     this.width = this.width ? this.width : 300;
+    console.log(this.dataUser)
   }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: SimpleChanges) { }
 }
 
 export class MenuTreeNodeModel {
