@@ -1,0 +1,21 @@
+<div class="card-voucher--container p-2">
+    <div class="top--voucher">
+        <img src="{{data.voucher_img}}" alt="" class="image--voucher">
+        <div class="total">
+            Total: {{data.voucher_qty}}
+        </div>
+    </div>
+    <div class="bottom--voucher text-center">
+        <div class="title-voucher">
+            {{data.voucher_title}}
+        </div>
+        <div class="des-voucher">
+            {{data.voucher_des}}
+        </div>
+    </div>
+    <div class="action-voucher">
+        <button mat-button>Generate<span class="material-icons">
+                arrow_right_alt
+            </span></button>
+    </div>
+</div>

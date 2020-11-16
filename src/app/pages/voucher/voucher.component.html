@@ -1,0 +1,8 @@
+<div class="mt-2">
+    <button mat-button (click)="openDialog()">Thêm Voucher</button>
+</div>
+<div class="voucher-container1 mt-5">
+
+    <app-voucher-card [data]="item" *ngFor="let item of data"></app-voucher-card>
+
+</div>

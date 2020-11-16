@@ -1,0 +1,50 @@
+.border-dot {
+  border: 1px solid black;
+  border-style: dotted;
+}
+
+.text-hover:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.custom-input-file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.files-list {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding: 0.5rem;
+  .single-file {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: center;
+
+    .delete {
+      display: flex;
+      cursor: pointer;
+    }
+  }
+}
+.fix-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+::ng-deep {
+  button.mat-focus-indicator.mat-icon-button.mat-button-base {
+    margin-left: -13px;
+    margin-top: -25px;
+    z-index: 5;
+    color: red;
+  }
+  .material-icons {
+    font-size: 18px;
+  }
+}

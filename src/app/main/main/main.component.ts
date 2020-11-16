@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
         this.dataNav.userInfo.avatar = user.avatar;
         this.dataNav.userInfo.fullName = user.name;
         if (user.role === 'admin') {
-          this.dataNav.urls[1].children.push(
+          this.dataNav.urls[2].children.push(
             {
               id: '1',
               name: 'Customer', // tên hiển thị trên sidebar

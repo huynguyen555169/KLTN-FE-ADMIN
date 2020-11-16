@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DashboardService } from 'src/app/core/services/api/dashboard-service/dashboard.service';
+import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -105,9 +107,12 @@ export class DashboardComponent implements OnInit {
   today;
   time;
   day;
+  //
+  weatherData: any;
 
 
-  constructor() { }
+
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.weekday[0] = "Sunday";
@@ -120,6 +125,12 @@ export class DashboardComponent implements OnInit {
     this.today = this.weekday[this.date.getDay()]
     this.time = this.date.toLocaleTimeString();
     this.day = this.date.toDateString();
+
+    let dataGet = new HttpRequestModel();
+    dataGet.params = {}
+    this.dashboardService.getWeather(dataGet).subscribe((res) => {
+      console.log(res)
+    })
   }
 
 

@@ -52,6 +52,11 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
+    path: 'voucher',
+    loadChildren: () => import('./pages/voucher/voucher.module').then(m => m.VoucherModule),
+    // canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

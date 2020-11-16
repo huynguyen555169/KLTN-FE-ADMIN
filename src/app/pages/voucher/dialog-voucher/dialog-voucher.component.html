@@ -1,0 +1,60 @@
+<div class="dialog-create-container p-2">
+    <div class="dialog-create-title d-flex align-items-center pb-4">
+        <span class="material-icons pr-2"> library_add </span>
+        Thêm sản phẩm
+    </div>
+    <div class="pt-2">
+        <app-c-discussion-attach0 (filesAttach)="handleFile($event)"></app-c-discussion-attach0>
+    </div>
+    <div class="dialog-create-body w-100" [formGroup]="createForm">
+        <div class="d-flex justify-content-between">
+            <div class="pr-5">
+                <div class="dialog-title">Voucher Name</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="voucher_title" />
+                    <mat-error>{{
+              createForm.controls["voucher_title"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Voucher Value</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="voucher_value" />
+                    <mat-error>{{
+              createForm.controls["voucher_value"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Description</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="voucher_des" />
+                    <mat-error>{{
+              createForm.controls["voucher_des"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Quality</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="voucher_qty" />
+                    <mat-error>{{
+              createForm.controls["voucher_qty"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="dialog-create-action pb-2 w-100 d-flex justify-content-center">
+            <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
+                [disabled]="!createForm.dirty || !createForm.valid">
+                Save
+            </button>
+            <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
+                Cancel
+            </button>
+        </div>
+    </div>

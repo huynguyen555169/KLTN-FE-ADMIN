@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center align-items-center border-dot mb-3 p-4" appDragDropFile
+  (fileDropped)="onFileDropped($event)">
+  <input class="custom-input-file" type="file" #fileDropRef id="fileDropRef" multiple
+    (change)="fileBrowseHandler($event.target.files)" />
+  <label class="text-hover text-primary mb-0" for="fileDropRef">Choose Files</label>
+</div>
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of url; let i = index">
+    <div class="d-flex">
+      <img [src]="file" class="fix-image" [matBadge]="1">
+      <button mat-icon-button (click)="deleteFile(i)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+
+    </div>
+
+  </div>
+</div>

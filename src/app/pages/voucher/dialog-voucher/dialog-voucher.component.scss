@@ -1,0 +1,55 @@
+.dialog-create-container {
+    font-size: 18px;
+
+    .dialog-create-title {
+        color: #2e2e2e;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .dialog-create-body {
+        padding: 20px 50px;
+        .dialog-value {
+            color: #777777;
+            padding-top: 20px;
+        }
+    }
+}
+::ng-deep {
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+        background-color: #06a700;
+    }
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: #989898;
+    }
+    .mat-form-field-infix {
+        width: 300px !important;
+    }
+    input.mat-input-element {
+        color: #777777;
+    }
+    .mat-form-field-infix {
+        border-top: none;
+    }
+}
+.pr-18 {
+    padding-right: 130px;
+}
+.dialog-btn {
+    font-weight: 500;
+    font-size: 18px;
+    width: 150px;
+    height: 50px;
+    box-shadow: none;
+    border: 1px solid #15748d;
+    color: #15748d;
+}
+.dialog-btn:first-child {
+    background-color: #15748d;
+    color: #ffffff;
+}
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #6a6a6a !important;
+    color: #666666;
+}
