@@ -6,60 +6,61 @@
     <div class="dialog-create-body w-100" [formGroup]="editForm">
         <div class="d-flex justify-content-between">
             <div class="pr-5">
-                <div class="dialog-title">Tên khách hàng</div>
+                <div class="dialog-title">Customer Name</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="name" />
+                    <input matInput formControlName="order_customer_name" />
                     <mat-error>{{
-              editForm.controls["name"].errors?.message
+              editForm.controls["order_customer_name"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
-                <div class="dialog-title">Tình trạng đơn hàng</div>
+                <div class="dialog-title">Status</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="status" />
+                    <input matInput formControlName="order_status" />
                     <mat-error>{{
-              editForm.controls["status"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="d-flex justify-content-between">
-            <div>
-                <div class="dialog-title">Mã đơn hàng</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="code" />
-                    <mat-error>{{
-              editForm.controls["code"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <div class="dialog-title">Ngày mua</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="date" />
-                    <mat-error>{{
-              editForm.controls["date"].errors?.message
+              editForm.controls["order_status"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
         <div class="d-flex justify-content-between">
             <div>
-                <div class="dialog-title">Sản phẩm</div>
+                <div class="dialog-title">Order ID</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="product" />
+                    <input matInput formControlName="order_id" />
                     <mat-error>{{
-              editForm.controls["product"].errors?.message
+              editForm.controls["order_id"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
-                <div class="dialog-title">Giá</div>
+                <div class="dialog-title">
+                    Order term</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="price" />
+                    <input matInput formControlName="createdAt" />
                     <mat-error>{{
-              editForm.controls["price"].errors?.message
+              editForm.controls["createdAt"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <div class="dialog-title">Phone</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="order_customer_phone" />
+                    <mat-error>{{
+              editForm.controls["order_customer_phone"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <div class="dialog-title">Address</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="order_customer_address" />
+                    <mat-error>{{
+              editForm.controls["order_customer_address"].errors?.message
             }}</mat-error>
                 </mat-form-field>
             </div>

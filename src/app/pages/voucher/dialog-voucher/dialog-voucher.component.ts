@@ -59,7 +59,6 @@ export class DialogVoucherComponent implements OnInit {
 
   }
   handleSelect(e): void {
-    console.log(e.value)
   }
   handleCancel(): void {
     if (this.createForm.dirty) {
@@ -74,6 +73,5 @@ export class DialogVoucherComponent implements OnInit {
   }
   handleFile(e) {
     this.files = e;
-    console.log(this.files)
   }
 }

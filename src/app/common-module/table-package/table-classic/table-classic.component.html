@@ -25,16 +25,19 @@
           </ng-template>
         </ng-container>
         <ng-container *ngIf="!isArray(element[column.value]) && column.type === 'chip1'">
+          <div class="create" *ngIf="element[column.value] === 'create'">
+            Create
+          </div>
           <div class="pending" *ngIf="element[column.value] === 'pending'">
             Pending
           </div>
           <div class="cancel" *ngIf="element[column.value] === 'cancel'">
             Cancel
           </div>
-          <div class="paymentfail" *ngIf="element[column.value] === 'paymentfail'">
+          <div class="paymentfail" *ngIf="element[column.value] === 'payment_fail'">
             Fail
           </div>
-          <div class="paymentsuccess" *ngIf="element[column.value] === 'paymentsuccess'">
+          <div class="paymentsuccess" *ngIf="element[column.value] === 'payment_success'">
             Success
           </div>
           <div class="shipping" *ngIf="element[column.value] === 'shipping'">
@@ -42,6 +45,9 @@
           </div>
           <div class="done" *ngIf="element[column.value] === 'done'">
             Done
+          </div>
+          <div class="return" *ngIf="element[column.value] === 'return'">
+            Return
           </div>
 
 

@@ -108,7 +108,6 @@ export class DashboardComponent implements OnInit {
   time;
   day;
   //
-  weatherData: any;
 
 
 
@@ -126,11 +125,7 @@ export class DashboardComponent implements OnInit {
     this.time = this.date.toLocaleTimeString();
     this.day = this.date.toDateString();
 
-    let dataGet = new HttpRequestModel();
-    dataGet.params = {}
-    this.dashboardService.getWeather(dataGet).subscribe((res) => {
-      console.log(res)
-    })
+
   }
 
 

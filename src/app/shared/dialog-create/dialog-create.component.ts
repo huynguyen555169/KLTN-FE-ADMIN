@@ -85,7 +85,6 @@ export class DialogCreateComponent implements OnInit {
     })
   }
   handleSelect(e): void {
-    console.log(e.value)
   }
   handleCancel(): void {
     if (this.createForm.dirty) {
@@ -100,7 +99,6 @@ export class DialogCreateComponent implements OnInit {
   }
   handleFile(e) {
     this.files = e;
-    console.log(this.files)
   }
 
 }

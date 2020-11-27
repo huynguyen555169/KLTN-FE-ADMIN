@@ -87,3 +87,7 @@ export const dataRole = [
   { value: 'role2', viewValue: '専門家' },
   { value: 'role3', viewValue: '管理員' },
 ];
+export const dataGender = [
+  { value: 'Nam', viewValue: 'Nam' },
+  { value: 'Nữ', viewValue: 'Nữ' },
+];

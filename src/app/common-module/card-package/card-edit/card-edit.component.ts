@@ -35,7 +35,6 @@ export class CardEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.initForm()
   }
   initForm(): void {
@@ -74,11 +73,9 @@ export class CardEditComponent implements OnInit {
     Object.assign(fashionEdit, { product_images: this.data.data.product_images });
     const dataFashionEdit = new HttpRequestModel();
     dataFashionEdit.body = { fashionEdit }
-    console.log(dataFashionEdit)
     this.fashionService.updateFashion(dataFashionEdit).subscribe((res) => {
       this.spinner.hide()
       fashionEdit = res;
-      console.log(res)
       // this.dialogRef.close(fashionEdit.body.fashionEdit);
       this.dialogRef.close(fashionEdit);
     })

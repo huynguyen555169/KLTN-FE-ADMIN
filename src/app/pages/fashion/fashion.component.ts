@@ -20,6 +20,7 @@ export class FashionComponent implements OnInit {
   keyword: string;
   currentPage = 1;
   placeholder = 'Bạn muốn tìm kiếm gì?'
+  totalPage: any;
   constructor(public dialog: MatDialog, private fashionService: FashionService, private spinner: CSpinnerService) { }
 
   ngOnInit(): void {
@@ -48,20 +49,19 @@ export class FashionComponent implements OnInit {
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = { type: type.product_type_id };
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.totalPage = item.countPage;
+      console.log(this.totalPage)
       this.data = item
       this.spinner.hide()
     }, (error) => {
-      console.log('lỗi')
     })
   }
   handleSort(e) {
-    console.log(e)
     const dataGetListFashion = new HttpRequestModel();
     dataGetListFashion.params = { sort: e.direction };
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.data = item
     }, (error) => {
-      console.log('lỗi')
     })
   }
 
@@ -71,7 +71,6 @@ export class FashionComponent implements OnInit {
       data: { data: e, typeData: this.typeData, sizeData: this.sizeData },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       if (result.message === "Update sản phẩm thành công!") {
         this.getData()
       }
@@ -86,7 +85,6 @@ export class FashionComponent implements OnInit {
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.data = item
     }, (error) => {
-      console.log('lỗi')
     })
   }
   handleValueSearch(e) {
@@ -98,7 +96,6 @@ export class FashionComponent implements OnInit {
       this.data = item
       this.spinner.hide()
     }, (error) => {
-      console.log('lỗi')
     })
     // this.getData(e);
   }
@@ -121,11 +118,11 @@ export class FashionComponent implements OnInit {
       }
     }
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
+      this.totalPage = item.countPage;
       this.spinner.hide()
       this.data = item
 
     }, (error) => {
-      console.log('lỗi')
     })
     this.keyword = text ? text : '';
     this.currentPage = currentPage ? currentPage : 1;

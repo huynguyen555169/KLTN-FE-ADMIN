@@ -29,7 +29,6 @@ export class MenuThreeComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.width = this.width ? this.width : 300;
-    console.log(this.dataUser)
   }
 
   ngOnChanges(changes: SimpleChanges) { }

@@ -51,8 +51,8 @@ export class DialogInfoComponent implements OnInit {
       ]),
       customer_gender: new FormControl(this.data.customer_gender, [
       ]),
-
-      customer_status: new FormControl(this.data.customer_status),
+      customer_address: new FormControl(this.data.customer_address, [
+      ])
     });
   }
   handleSave(): void {
@@ -60,7 +60,6 @@ export class DialogInfoComponent implements OnInit {
     const dataEditUser = new HttpRequestModel();
     dataEditUser.body = { customerEdit };
     this.customerService.updateUser(dataEditUser).subscribe((res) => {
-      console.log(res.body.customerEdit)
       customerEdit = new CustomerModel(res.body.customerEdit);
       this.dialogRef.close(customerEdit);
     })

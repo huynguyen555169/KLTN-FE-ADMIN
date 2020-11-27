@@ -24,32 +24,32 @@ export class EditOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm()
-    console.log(this.data)
   }
   initForm(): void {
+    console.log(this.data)
     this.editForm = new FormGroup({
-      name: new FormControl(this.data.name, [
+      order_customer_name: new FormControl(this.data.order_customer_name, [
         CustomValidator.required,
         CustomValidator.maxLength(10),
         CustomValidator.numberOnly
       ]),
-      status: new FormControl(this.data.status, [
+      order_status: new FormControl(this.data.order_status, [
         CustomValidator.required,
         CustomValidator.maxLength(32),
 
       ]),
-      code: new FormControl(this.data.code, [
+      order_id: new FormControl(this.data.order_id, [
         CustomValidator.required,
         CustomValidator.numberOnly
       ]),
-      date: new FormControl(this.data.date, [
+      createdAt: new FormControl(this.data.createdAt, [
         CustomValidator.required,
         CustomValidator.maxLength(80),
       ]),
-      product: new FormControl(this.data.product, [
+      order_customer_phone: new FormControl(this.data.order_customer_phone, [
         CustomValidator.required,
       ]),
-      price: new FormControl(this.data.price, [
+      order_customer_address: new FormControl(this.data.order_customer_address, [
         CustomValidator.required,
       ])
     });

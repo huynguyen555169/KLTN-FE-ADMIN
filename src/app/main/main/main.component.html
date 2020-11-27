@@ -8,13 +8,12 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-2">
-        <app-menu-three [data]="dataNav" [width]="width" class="w-100" *ngIf="!router.url.includes('login')">
-        </app-menu-three>
-    </div>
-    <div class="col-10 pr-5">
+<div class="d-flex">
+    <app-menu-three [data]="dataNav" [width]="width" class="pr-5" *ngIf="!router.url.includes('login')">
+    </app-menu-three>
+    <div class="w-100">
         <router-outlet></router-outlet>
+
     </div>
 </div>
 <app-c-spinner class="undisplayed"></app-c-spinner>

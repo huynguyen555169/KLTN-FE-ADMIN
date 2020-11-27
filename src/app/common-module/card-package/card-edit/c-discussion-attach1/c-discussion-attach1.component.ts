@@ -45,7 +45,6 @@ export class CDiscussionAttach1Component implements OnInit {
       }
     }
     this.filesAttach.emit(this.files);
-    console.log(this.url)
 
   }
 

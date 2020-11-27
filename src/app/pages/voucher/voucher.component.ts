@@ -19,7 +19,6 @@ export class VoucherComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogVoucherComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

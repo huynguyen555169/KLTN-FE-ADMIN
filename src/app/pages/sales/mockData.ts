@@ -2,33 +2,28 @@ export const dataConfig = {
     columns: [
         {
             displayName: 'Customer name', // Dislay name in header
-            value: 'name', // The value to pouring data into the column
+            value: 'order_customer_name', // The value to pouring data into the column
             sort: true, // Option sort header
         },
         {
             displayName: 'Status', // Dislay name in header
-            value: 'status',
+            value: 'order_status',
             sort: true, // Option sort header
             type: 'chip1'
         },
         {
             displayName: 'Order number', // Dislay name in header
-            value: 'code', // The value to pouring data into the column
+            value: 'order_id', // The value to pouring data into the column
             sort: false, // Option sort header
         },
         {
             displayName: 'Order term', // Dislay name in header
-            value: 'date', // The value to pouring data into the column
+            value: 'createdAt', // The value to pouring data into the column
             sort: false, // Option sort header
         },
         {
-            displayName: 'Product', // Dislay name in header
-            value: 'product', // The value to pouring data into the column
-            sort: true, // Option sort header
-        },
-        {
-            displayName: 'Price', // Dislay name in header
-            value: 'price', // The value to pouring data into the column
+            displayName: 'Phone', // Dislay name in header
+            value: 'order_customer_phone', // The value to pouring data into the column
             sort: true, // Option sort header
         }
     ],

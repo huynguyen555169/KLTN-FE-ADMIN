@@ -26,11 +26,11 @@ export class UserService {
     // return of(user);
   }
   updateUser(parram: HttpRequestModel) {
-    const apiUrl = `${this.baseUrl}role/get-all`;
+    const apiUrl = `${this.baseUrl}employee/update-profile`;
     const params = parram.params;
     const body = parram.body;
     const headers = parram.headers;
-    return this.http.get(apiUrl, params, body, headers);
+    return this.http.put(apiUrl, params, body, headers);
     // return of(user);
   }
   getRole(parram: HttpRequestModel) {

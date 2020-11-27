@@ -48,3 +48,17 @@
     height: 1px;
     width: 100%;
 }
+::ng-deep {
+    .mat-tab-body {
+        height: 550px;
+
+        overflow: scroll;
+    }
+    .mat-tab-body-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    button.mat-button-base {
+        color: #ffffff !important;
+    }
+}

@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
   sort;
   currentPage = 1;
   dataConfig = dataConfig;
+  totalPage: any;
   placeholder = 'Nhập tên bạn muốn tìm kiếm'
   constructor(public dialog: MatDialog, private customerService: CustomerService, private spinner: SpinnerService) { }
 
@@ -43,9 +44,8 @@ export class CustomerComponent implements OnInit {
     const dataGetListCustomer = new HttpRequestModel();
     dataGetListCustomer.params = { search: e };
     this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
-      this.data = item
+      this.data = item.data
     }, (error) => {
-      console.log('lỗi')
     })
     // this.getData(e);
   }
@@ -55,7 +55,6 @@ export class CustomerComponent implements OnInit {
     this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
       this.data = item
     }, (error) => {
-      console.log('lỗi')
     })
     // this.getData(e)
 
@@ -82,8 +81,8 @@ export class CustomerComponent implements OnInit {
       }
     }
     this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
-      this.data = item
-      console.log(this.data)
+      this.totalPage = item.countPage
+      this.data = item.data
     })
     this.keyword = text ? text : '';
     this.currentPage = currentPage ? currentPage : 1;

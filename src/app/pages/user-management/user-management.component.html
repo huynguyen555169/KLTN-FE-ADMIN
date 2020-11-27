@@ -9,16 +9,17 @@
   </div>
   <div class="user-container--body">
     <app-search (valueSearch)="handleValueSearch($event)" [placeholder]="placeholder"></app-search>
-    <div class="user-body--table" *ngIf="users.length > 0; else noData">
-      <app-table-classic [tableConfig]="dataConfig" [data]="users" (editData)="handleEditData($event)"
+    <div class="user-body--table" *ngIf="users.data.length > 0; else noData">
+      <app-table-classic [tableConfig]="dataConfig" [data]="users.data" (editData)="handleEditData($event)"
         (isSort)="handleSort($event)" [clearSort]="clearSort"></app-table-classic>
     </div>
     <ng-template #noData>
-      <img src="../../../assets/images/noData.jpeg" alt="" />
+      No data
     </ng-template>
   </div>
   <div class="user-container-footer d-flex justify-content-center align-items-center w-100 pb-4">
-    <app-pagination [currentPage]="currentPage" [totalPage]="'9'" (pageChange)="handlePageChange($event)">
+    <app-pagination [currentPage]="currentPage" [totalPage]="totalPage" (pageChange)="handlePageChange($event)"
+      *ngIf="totalPage>1">
     </app-pagination>
   </div>
 </div>

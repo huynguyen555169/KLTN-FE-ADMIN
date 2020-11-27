@@ -21,10 +21,9 @@ export const dataConfig = {
             sort: true, // Option sort header
         },
         {
-            displayName: 'Status', // Dislay name in header
-            value: 'customer_status', // The value to pouring data into the column
+            displayName: 'Address', // Dislay name in header
+            value: 'customer_address', // The value to pouring data into the column
             sort: true, // Option sort header
-            type: 'chip'
         }
     ],
     action: {

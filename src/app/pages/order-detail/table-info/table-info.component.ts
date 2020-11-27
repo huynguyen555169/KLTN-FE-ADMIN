@@ -17,7 +17,6 @@ export class TableInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.dataList)
   }
   isArray(value: any): any {
     return Array.isArray(value);

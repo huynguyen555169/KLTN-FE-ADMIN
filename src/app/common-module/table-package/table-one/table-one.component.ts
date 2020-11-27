@@ -31,7 +31,6 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.data);
-    console.log(this.dataSource)
     if (changes.clearSort && !changes.clearSort.isFirstChange()) {
       this.clearSortHeader();
     }

@@ -16,6 +16,16 @@
           }}</mat-error>
         </mat-form-field>
       </div>
+      <div>
+        <div class="dialog-title">Gender</div>
+        <mat-form-field [floatLabel]="'never'">
+          <mat-select name="gender" formControlName="employee_gender">
+            <mat-option *ngFor="let type of data.gender" [value]="type.value">
+              {{ type.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
     <div class="d-flex justify-content-between">
       <div class="pr-18">

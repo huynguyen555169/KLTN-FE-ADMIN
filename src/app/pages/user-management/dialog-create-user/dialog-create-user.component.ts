@@ -41,7 +41,6 @@ export class DialogCreateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.roles = this.data.roles;
-    console.log(this.roles);
     this.initForm();
   }
   initForm(): void {
@@ -79,7 +78,6 @@ export class DialogCreateUserComponent implements OnInit {
         this.dialogRef.close(res);
       },
       (error) => {
-        console.log('error');
       }
     );
   }

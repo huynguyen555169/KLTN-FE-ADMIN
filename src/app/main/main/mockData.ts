@@ -80,11 +80,6 @@ export const dataNav = {
                 icon: 'card_giftcard', // icon hiển thị (material icon)
             }]
 
-        }, {
-            id: 'string',
-            name: 'Review', // tên hiển thị trên sidebar
-            url: '', // url để navigate
-            icon: 'rate_review'
         }],
     footActions: [{
         id: 'string',

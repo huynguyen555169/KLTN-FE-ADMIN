@@ -1,10 +1,11 @@
-import { dataConfig } from './mockData';
+import { dataConfig, dataGender } from './mockData';
 import { DialogCreateUserComponent } from './dialog-create-user/dialog-create-user.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { UserService } from 'src/app/core/services/api/user-service/user.service';
 import { HttpRequestModel } from 'src/app/core/services/http-request-service/http-request-service';
+import { CSpinnerService } from 'src/app/common-module/c-spinner/c-spinner.service';
 
 @Component({
   selector: 'app-user-management',
@@ -13,16 +14,19 @@ import { HttpRequestModel } from 'src/app/core/services/http-request-service/htt
 })
 export class UserManagementComponent implements OnInit {
   clearSort = false;
+  dataGender = dataGender;
   dataConfig = dataConfig;
   keyword: string;
   users: any;
   roles: any;
   currentPage = 1;
   sort;
+  totalPage: any;
   placeholder = 'Tìm kiếm';
   constructor(
     public dialog: MatDialog,
-    private userManagementService: UserService
+    private userManagementService: UserService,
+    private spinner: CSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +42,7 @@ export class UserManagementComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogCreateUserComponent, {
       data: {
         roles: this.roles,
+
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -47,7 +52,14 @@ export class UserManagementComponent implements OnInit {
 
   handleValueSearch(e): void {
     this.clearSort = !this.clearSort;
-    this.getData(e);
+    this.spinner.show()
+    const dataGetListStaff = new HttpRequestModel();
+    dataGetListStaff.params = { search: e };
+    this.userManagementService.getListUser(dataGetListStaff).subscribe((item) => {
+      this.users = item
+      this.spinner.hide()
+    }, (error) => {
+    })
   }
 
   handleEditData(item): void {
@@ -55,15 +67,13 @@ export class UserManagementComponent implements OnInit {
       disableClose: true,
       data: {
         data: item,
-        roles: this.roles
+        roles: this.roles,
+        gender: this.dataGender
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        const index = this.users.indexOf(result);
-        this.users.splice(index, 1);
-        this.users = [...this.users];
-        this.users.unshift(result);
+        this.getData()
       }
     });
   }
@@ -93,6 +103,7 @@ export class UserManagementComponent implements OnInit {
       this.sort = sort;
     }
     this.userManagementService.getListUser(dataGetListUser).subscribe((res) => {
+      this.totalPage = res.countPage
       this.users = res;
       console.log(this.users)
       console.log(this.dataConfig)

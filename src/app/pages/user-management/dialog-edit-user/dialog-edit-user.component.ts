@@ -17,7 +17,7 @@ import { UserModel } from '../user.model';
 })
 export class DialogEditUserComponent implements OnInit {
   hide = true;
-  roles = dataRole;
+  roles;
 
   param = {
     title: 'Thông báo',
@@ -40,19 +40,24 @@ export class DialogEditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    console.log(this.data)
+    this.roles = this.data.roles
   }
 
   initForm(): void {
     this.editUserForm = new FormGroup({
+      employee_id: new FormControl(this.data.data.employee_id, [
+        CustomValidator.required,
+        CustomValidator.maxLength(32),
+      ]),
       employee_userName: new FormControl(this.data.data.employee_userName, [
         CustomValidator.required,
         CustomValidator.maxLength(32),
       ]),
-      employee_password: new FormControl('', [
+      employee_gender: new FormControl(this.data.data.employee_gender, [
         CustomValidator.required,
-        CustomValidator.rangeLength(8, 16),
+        CustomValidator.maxLength(32),
       ]),
+      employee_password: new FormControl(''),
       employee_fullName: new FormControl(this.data.data.employee_fullName, [
         CustomValidator.required,
         CustomValidator.maxLength(64),
@@ -70,13 +75,13 @@ export class DialogEditUserComponent implements OnInit {
     let user = this.editUserForm.value;
     const dataEditUser = new HttpRequestModel()
     dataEditUser.body = { user }
+    console.log(dataEditUser)
     this.userService.updateUser(dataEditUser).subscribe(
       (res) => {
         this.spinner.hide()
         this.dialogRef.close(res);
       },
       (error) => {
-        console.log('error');
       }
     );
   }

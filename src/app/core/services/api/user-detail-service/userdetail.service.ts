@@ -22,8 +22,8 @@ export class UserDetailService {
     const body = data.body;
     const headers = data.headers;
 
-    return of(this.user)
-    // return this.http.get(apiUrl, params, body, headers);
+    // return of(this.user)
+    return this.http.get(apiUrl, params, body, headers);
   }
   updateUserAndPermission(data: HttpRequestModel) {
     const apiUrl = `${this.baseUrl}/users`;

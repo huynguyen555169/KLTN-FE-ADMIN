@@ -14,9 +14,10 @@ import { dataNav } from './mockData';
 })
 export class MainComponent implements OnInit {
   dataNav = dataNav;
-  width = 400;
+  width = 200;
   isLogin = true;
   isShowHeader = false;
+  userData;
   constructor(public router: Router, private route: ActivatedRoute, private authService: AuthenticationService, private userDetailService: UserDetailService,) {
     router.events.pipe(
       filter(event => event instanceof NavigationStart)
@@ -31,36 +32,30 @@ export class MainComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.authService.currentUser.subscribe(res => {
-      (this.isLogin = !res);
-      const requestModel = new HttpRequestModel();
-      requestModel.params = {};
-      this.userDetailService.getUserAndPermission(requestModel).subscribe(user => {
-        this.dataNav.userInfo.avatar = user.avatar;
-        this.dataNav.userInfo.fullName = user.name;
-        if (user.role === 'admin') {
-          this.dataNav.urls[2].children.push(
-            {
-              id: '1',
-              name: 'Customer', // tên hiển thị trên sidebar
-              url: 'customer', // url để navigate
-              icon: 'face', // icon hiển thị (material icon)
-            }, {
-            id: '2',
-            name: 'Staff', // tên hiển thị trên sidebar
-            url: 'staff', // url để navigate
-            icon: 'face', // icon hiển thị (material icon)
-          }, {
-            id: 'e',
-            name: 'Permission', // tên hiển thị trên sidebar
-            url: 'permission', // url để navigate
-            icon: 'face', // icon hiển thị (material icon)
-          }
-          );
-        }
-      });
+    this.userData = JSON.parse(localStorage.getItem('currentUser')).userData;
+    this.dataNav.userInfo.avatar = this.userData.avatar;
+    this.dataNav.userInfo.fullName = this.userData.name;
+    if (this.userData.role === '1') {
+      this.dataNav.urls[2].children.push(
+        {
+          id: '1',
+          name: 'Customer', // tên hiển thị trên sidebar
+          url: 'customer', // url để navigate
+          icon: 'face', // icon hiển thị (material icon)
+        }, {
+        id: '2',
+        name: 'Staff', // tên hiển thị trên sidebar
+        url: 'staff', // url để navigate
+        icon: 'face', // icon hiển thị (material icon)
+      }, {
+        id: 'e',
+        name: 'Permission', // tên hiển thị trên sidebar
+        url: 'permission', // url để navigate
+        icon: 'face', // icon hiển thị (material icon)
+      }
+      );
     }
-    );
+
   }
 
 }

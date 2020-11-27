@@ -14,17 +14,17 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'fashion',
     loadChildren: () => import('./pages/fashion/fashion.module').then(m => m.FashionModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer',
     loadChildren: () => import('./pages/customer/customer.module').then(m => m.CustomerModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -34,27 +34,27 @@ const routes: Routes = [
   {
     path: 'sale',
     loadChildren: () => import('./pages/sales/sales.module').then(m => m.SalesModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'permission',
     loadChildren: () => import('./pages/permission/permission.module').then(m => m.PermissionModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'staff',
     loadChildren: () => import('./pages/user-management/user-management.module').then(m => m.UserManagementModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'detail-order',
     loadChildren: () => import('./pages/order-detail/order-detail.module').then(m => m.OrderDetailModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'voucher',
     loadChildren: () => import('./pages/voucher/voucher.module').then(m => m.VoucherModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

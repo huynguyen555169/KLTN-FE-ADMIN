@@ -19,7 +19,8 @@
 
     </div>
     <div class="pagi w-100 text-center">
-        <app-pagination [currentPage]="currentPage" [totalPage]="'9'" (pageChange)="handlePageChange($event)">
+        <app-pagination [currentPage]="currentPage" [totalPage]="totalPage" (pageChange)="handlePageChange($event)"
+            *ngIf="totalPage>1">
         </app-pagination>
     </div>
 </div>

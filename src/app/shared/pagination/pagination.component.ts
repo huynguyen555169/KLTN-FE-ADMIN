@@ -18,7 +18,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   @Input() currentPage: number;
   @Output() pageChange = new EventEmitter<number>();
 
-  constructor() {}
+  constructor() { }
 
   // From current - 2 -> current + 2
   pageShowArray: Array<number> = [];
@@ -27,7 +27,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   isDisablePrevious = true;
   isDisableNext = true;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -44,10 +44,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   updateShowArray(): void {
     this.pageShowArray.length = 0;
     const startPage = Math.min(
-      +this.totalPage - 4,
+      +this.totalPage,
       Math.max(1, this.currentPage - 2)
     );
-    this.pageShowArray = Array.from({ length: 5 }, (_, i) => i + startPage);
+    this.pageShowArray = Array.from({ length: this.totalPage }, (_, i) => i + startPage);
     this.updateStateButton();
   }
 

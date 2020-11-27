@@ -15,6 +15,15 @@
             }}</mat-error>
                 </mat-form-field>
             </div>
+            <div class="pl-18">
+                <div class="dialog-title">Birthday</div>
+                <mat-form-field [floatLabel]="'never'">
+                    <input matInput formControlName="customer_birthday" placeholder="" />
+                    <mat-error>{{
+              editUserForm.controls["customer_birthday"].errors?.message
+            }}</mat-error>
+                </mat-form-field>
+            </div>
         </div>
         <div class="d-flex justify-content-between">
             <div class="pr-18">
@@ -38,22 +47,12 @@
         </div>
         <div class="d-flex justify-content-between">
             <div class="pr-18">
-                <div class="dialog-title">Birthday</div>
+                <div class="dialog-title">Address</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="customer_birthday" placeholder="" />
+                    <input matInput formControlName="customer_address" />
                     <mat-error>{{
-              editUserForm.controls["customer_birthday"].errors?.message
+              editUserForm.controls["customer_address"].errors?.message
             }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <div class="dialog-title">Status</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <mat-select name="gender" formControlName="customer_status">
-                        <mat-option *ngFor="let i of status" [value]="i.value">
-                            {{ i.viewValue }}
-                        </mat-option>
-                    </mat-select>
                 </mat-form-field>
             </div>
         </div>
