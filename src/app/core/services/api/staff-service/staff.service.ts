@@ -5,7 +5,7 @@ import { HttpRequestModel, HttpRequestService } from '../../http-request-service
   providedIn: 'root'
 })
 export class StaffService {
-  baseUrl = 'http://192.168.0.108:8080/';
+  baseUrl = 'https://kltn-be.herokuapp.com/';
   constructor(private http: HttpRequestService) { }
 
   getListStaff(parram: HttpRequestModel) {

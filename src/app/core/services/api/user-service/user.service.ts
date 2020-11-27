@@ -7,7 +7,7 @@ import { HttpRequestModel, HttpRequestService } from '../../http-request-service
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://192.168.0.108:8080/';
+  baseUrl = 'https://kltn-be.herokuapp.com/';
   constructor(private http: HttpRequestService) { }
   getListUser(parram: HttpRequestModel) {
     const apiUrl = `${this.baseUrl}employee/get-all`;

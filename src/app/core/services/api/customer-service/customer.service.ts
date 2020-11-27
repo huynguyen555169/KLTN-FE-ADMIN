@@ -8,7 +8,7 @@ import { HttpRequestService } from '../../http-request-service/http-request-serv
   providedIn: 'root'
 })
 export class CustomerService {
-  baseUrl = 'http://192.168.0.108:8080/';
+  baseUrl = 'https://kltn-be.herokuapp.com/';
   constructor(private http: HttpRequestService) { }
   getListCustomer(parram: any): Observable<any> {
     const apiUrl = `${this.baseUrl}customer/find-all`;
