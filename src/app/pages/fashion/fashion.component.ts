@@ -50,7 +50,6 @@ export class FashionComponent implements OnInit {
     dataGetListFashion.params = { type: type.product_type_id };
     this.fashionService.getListFashion(dataGetListFashion).subscribe((item) => {
       this.totalPage = item.countPage;
-      console.log(this.totalPage)
       this.data = item
       this.spinner.hide()
     }, (error) => {

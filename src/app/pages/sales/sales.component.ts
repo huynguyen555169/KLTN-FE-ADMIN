@@ -51,7 +51,6 @@ export class SalesComponent implements OnInit {
     this.saleService.getListOrder(httpOptions).subscribe((res) => {
       this.totalPage = res.countPage;
       this.data = res.data;
-      console.log(res)
 
     });
     this.keyword = text ? text : '';

@@ -34,7 +34,6 @@ export class UserManagementComponent implements OnInit {
     let dataGetRole = new HttpRequestModel();
     this.userManagementService.getRole(dataGetRole).subscribe((res) => {
       this.roles = res;
-      console.log(this.roles)
     });
   }
 
@@ -105,8 +104,6 @@ export class UserManagementComponent implements OnInit {
     this.userManagementService.getListUser(dataGetListUser).subscribe((res) => {
       this.totalPage = res.countPage
       this.users = res;
-      console.log(this.users)
-      console.log(this.dataConfig)
     });
     this.keyword = text ? text : '';
     this.currentPage = currentPage ? currentPage : 1;

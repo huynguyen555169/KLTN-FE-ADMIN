@@ -75,7 +75,6 @@ export class DialogEditUserComponent implements OnInit {
     let user = this.editUserForm.value;
     const dataEditUser = new HttpRequestModel()
     dataEditUser.body = { user }
-    console.log(dataEditUser)
     this.userService.updateUser(dataEditUser).subscribe(
       (res) => {
         this.spinner.hide()

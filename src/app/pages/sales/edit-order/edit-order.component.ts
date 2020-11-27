@@ -26,7 +26,6 @@ export class EditOrderComponent implements OnInit {
     this.initForm()
   }
   initForm(): void {
-    console.log(this.data)
     this.editForm = new FormGroup({
       order_customer_name: new FormControl(this.data.order_customer_name, [
         CustomValidator.required,

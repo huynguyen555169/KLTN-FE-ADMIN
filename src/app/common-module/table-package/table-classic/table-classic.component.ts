@@ -69,7 +69,6 @@ export class TableClassicComponent implements AfterViewInit, OnChanges {
    * Innit data for table
    */
   initData(): void {
-    console.log(this.data)
     this.tableConfig.columns.forEach((el) => {
       this.columnsToDisplay.push(el.value);
     });
