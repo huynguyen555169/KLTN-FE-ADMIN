@@ -1,79 +1,10 @@
-<div class="dialog-create-container p-2">
-    <div class="dialog-create-title d-flex align-items-center pb-4">
-        <span class="material-icons pr-2 "> edit</span>
-        Sửa đơn hàng
-    </div>
-    <div class="dialog-create-body w-100" [formGroup]="editForm">
-        <div class="d-flex justify-content-between">
-            <div class="pr-5">
-                <div class="dialog-title">Customer Name</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="order_customer_name" />
-                    <mat-error>{{
-              editForm.controls["order_customer_name"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <div class="dialog-title">Status</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="order_status" />
-                    <mat-error>{{
-              editForm.controls["order_status"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="d-flex justify-content-between">
-            <div>
-                <div class="dialog-title">Order ID</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="order_id" />
-                    <mat-error>{{
-              editForm.controls["order_id"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <div class="dialog-title">
-                    Order term</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="createdAt" />
-                    <mat-error>{{
-              editForm.controls["createdAt"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="d-flex justify-content-between">
-            <div>
-                <div class="dialog-title">Phone</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="order_customer_phone" />
-                    <mat-error>{{
-              editForm.controls["order_customer_phone"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <div class="dialog-title">Address</div>
-                <mat-form-field [floatLabel]="'never'">
-                    <input matInput formControlName="order_customer_address" />
-                    <mat-error>{{
-              editForm.controls["order_customer_address"].errors?.message
-            }}</mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-
-    </div>
-    <div class="dialog-create-action pb-2 w-100 d-flex justify-content-center">
-        <button mat-raised-button class="mr-4 dialog-btn" (click)="handleSave()"
-            [disabled]="!editForm.dirty || !editForm.valid">
-            Save
-        </button>
-        <button mat-raised-button class="ml-4 dialog-btn" (click)="handleCancel()">
-            Cancel
-        </button>
-    </div>
+<div class="" [formGroup]="editForm">
+    <mat-form-field appearance="fill" class="pt-2 pb-10">
+        <mat-label>Edit Status</mat-label>
+        <mat-select formControlName="order_status" name="order_status">
+            <mat-option *ngFor="let food of data1" [value]="food.key">
+                {{food.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>

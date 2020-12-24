@@ -38,7 +38,7 @@ export class SalesComponent implements OnInit {
 
   }
   handleView(e) {
-    this.router.navigate(['/detail-order'])
+    this.router.navigate(['/detail-order'], { queryParams: { id: e.order_id } })
   }
   getData(text?, currentPage?, sort?): void {
     const token = JSON.parse(localStorage.getItem('currentUser')).accessToken;

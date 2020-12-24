@@ -5,6 +5,8 @@
 export const environment = {
   production: true,
   baseUrl: 'https://kltn-be.herokuapp.com/'
+  // baseUrl: 'http://192.168.0.108:8080/'
+  // baseUrl: 'http://localhost:8080/'
 };
 
 /*

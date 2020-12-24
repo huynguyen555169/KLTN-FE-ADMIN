@@ -1,7 +1,7 @@
 <div class="dialog-info-container p-2">
-    <div class="dialog-info-title">
-        <span class="material-icons"> edit </span>
-        Sửa thông tin
+    <div class="dialog-info-title d-flex align-items-center">
+        <span class="material-icons"> info </span>
+        Thông tin khách hàng
     </div>
     <div class="dialog-info-body p-5 w-100" [formGroup]="editUserForm">
         <div class="d-flex justify-content-between">
@@ -11,8 +11,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="customer_phone" />
                     <mat-error>{{
-              editUserForm.controls["customer_phone"].errors?.message
-            }}</mat-error>
+                        editUserForm.controls["customer_phone"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div class="pl-18">
@@ -20,8 +20,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="customer_birthday" placeholder="" />
                     <mat-error>{{
-              editUserForm.controls["customer_birthday"].errors?.message
-            }}</mat-error>
+                        editUserForm.controls["customer_birthday"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -31,8 +31,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="customer_fullName" />
                     <mat-error>{{
-              editUserForm.controls["customer_fullName"].errors?.message
-            }}</mat-error>
+                        editUserForm.controls["customer_fullName"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
@@ -40,8 +40,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="customer_gender" />
                     <mat-error>{{
-              editUserForm.controls["customer_gender"].errors?.message
-            }}</mat-error>
+                        editUserForm.controls["customer_gender"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -51,8 +51,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="customer_address" />
                     <mat-error>{{
-              editUserForm.controls["customer_address"].errors?.message
-            }}</mat-error>
+                        editUserForm.controls["customer_address"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>

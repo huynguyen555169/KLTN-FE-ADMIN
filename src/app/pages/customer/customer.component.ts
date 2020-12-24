@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/core/services/api/customer-service/customer.service';
@@ -21,10 +22,20 @@ export class CustomerComponent implements OnInit {
   dataConfig = dataConfig;
   totalPage: any;
   placeholder = 'Nhập tên bạn muốn tìm kiếm'
+  token;
+  httpOptions;
+
   constructor(public dialog: MatDialog, private customerService: CustomerService, private spinner: SpinnerService) { }
 
   ngOnInit(): void {
+    this.token = JSON.parse(localStorage.getItem('currentUser')).accessToken;
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': this.token
+      })
+    };
     this.getData()
+
   }
 
   handleEdit(e) {
@@ -43,7 +54,7 @@ export class CustomerComponent implements OnInit {
   handleValueSearch(e) {
     const dataGetListCustomer = new HttpRequestModel();
     dataGetListCustomer.params = { search: e };
-    this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
+    this.customerService.getListCustomer(dataGetListCustomer, this.httpOptions).subscribe((item) => {
       this.data = item.data
     }, (error) => {
     })
@@ -52,7 +63,7 @@ export class CustomerComponent implements OnInit {
   handlePageChange(e) {
     const dataGetListCustomer = new HttpRequestModel();
     dataGetListCustomer.params = { currentPage: e };
-    this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
+    this.customerService.getListCustomer(dataGetListCustomer, this.httpOptions).subscribe((item) => {
       this.data = item
     }, (error) => {
     })
@@ -80,7 +91,8 @@ export class CustomerComponent implements OnInit {
         Object.assign(dataGetListCustomer.params, { type: type });
       }
     }
-    this.customerService.getListCustomer(dataGetListCustomer).subscribe((item) => {
+
+    this.customerService.getListCustomer(dataGetListCustomer, this.httpOptions).subscribe((item) => {
       this.totalPage = item.countPage
       this.data = item.data
     })

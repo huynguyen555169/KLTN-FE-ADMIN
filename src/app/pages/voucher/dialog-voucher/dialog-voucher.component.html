@@ -1,7 +1,7 @@
 <div class="dialog-create-container p-2">
     <div class="dialog-create-title d-flex align-items-center pb-4">
         <span class="material-icons pr-2"> library_add </span>
-        Thêm sản phẩm
+        Thêm Voucher
     </div>
     <div class="pt-2">
         <app-c-discussion-attach0 (filesAttach)="handleFile($event)"></app-c-discussion-attach0>
@@ -13,8 +13,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="voucher_title" />
                     <mat-error>{{
-              createForm.controls["voucher_title"].errors?.message
-            }}</mat-error>
+                        createForm.controls["voucher_title"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
@@ -22,8 +22,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="voucher_value" />
                     <mat-error>{{
-              createForm.controls["voucher_value"].errors?.message
-            }}</mat-error>
+                        createForm.controls["voucher_value"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -33,8 +33,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="voucher_des" />
                     <mat-error>{{
-              createForm.controls["voucher_des"].errors?.message
-            }}</mat-error>
+                        createForm.controls["voucher_des"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
@@ -42,8 +42,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="voucher_qty" />
                     <mat-error>{{
-              createForm.controls["voucher_qty"].errors?.message
-            }}</mat-error>
+                        createForm.controls["voucher_qty"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>

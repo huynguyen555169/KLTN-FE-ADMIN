@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpRequestModel, HttpRequestService } from '../../http-request-service/http-request-service';
 @Injectable({
@@ -22,7 +21,6 @@ export class UserDetailService {
     const body = data.body;
     const headers = data.headers;
 
-    // return of(this.user)
     return this.http.get(apiUrl, params, body, headers);
   }
   updateUserAndPermission(data: HttpRequestModel) {

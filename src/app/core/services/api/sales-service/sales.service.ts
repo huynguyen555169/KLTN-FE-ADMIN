@@ -6,6 +6,8 @@ import { HttpRequestModel, HttpRequestService } from '../../http-request-service
 })
 export class SalesService {
   baseUrl = 'https://kltn-be.herokuapp.com/';
+  // baseUrl = 'http://192.168.0.108:8080/';
+  // baseUrl = 'http://localhost:8080/';
   constructor(private http: HttpRequestService) { }
   getListOrder(parram: HttpRequestModel) {
     const apiUrl = `${this.baseUrl}order/get-all`;
@@ -13,6 +15,12 @@ export class SalesService {
     const body = parram.body;
     const headers = parram.headers;
     return this.http.get(apiUrl, params, body, headers);
-    // return of(data);
+  }
+  getOrderId(parram: HttpRequestModel, token: HttpRequestModel) {
+    const apiUrl = `${this.baseUrl}order/get-by-id`;
+    const params = parram.params;
+    const body = parram.body;
+    const headers = token.headers;
+    return this.http.get(apiUrl, params, body, headers);
   }
 }

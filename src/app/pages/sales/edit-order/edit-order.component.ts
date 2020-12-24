@@ -11,15 +11,25 @@ import { CustomValidator } from 'src/app/core/validate-service/custom-validator'
 })
 export class EditOrderComponent implements OnInit {
   editForm: FormGroup;
-  param = {
-    title: 'Thông báo',
-    message:
-      'Bạn có muốn lưu',
-    buttons: [
-      { text: 'YES', actionValue: 1 },
-      { text: 'NO', actionValue: 2 },
-    ],
-  };
+  data1 = [
+    {
+      key: 1,
+      value: 'Xác nhận'
+    },
+    {
+      key: 2,
+      value: 'Đang giao'
+    },
+    {
+      key: 3,
+      value: 'Huỷ đơn'
+    },
+    {
+      key: 4,
+      value: 'Hoàn tất'
+    }
+  ]
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditOrderComponent>, private dialogNotification: DialogNotificationService) { }
 
   ngOnInit(): void {
@@ -27,44 +37,16 @@ export class EditOrderComponent implements OnInit {
   }
   initForm(): void {
     this.editForm = new FormGroup({
-      order_customer_name: new FormControl(this.data.order_customer_name, [
-        CustomValidator.required,
-        CustomValidator.maxLength(10),
-        CustomValidator.numberOnly
-      ]),
-      order_status: new FormControl(this.data.order_status, [
-        CustomValidator.required,
-        CustomValidator.maxLength(32),
-
-      ]),
-      order_id: new FormControl(this.data.order_id, [
-        CustomValidator.required,
-        CustomValidator.numberOnly
-      ]),
-      createdAt: new FormControl(this.data.createdAt, [
-        CustomValidator.required,
-        CustomValidator.maxLength(80),
-      ]),
-      order_customer_phone: new FormControl(this.data.order_customer_phone, [
-        CustomValidator.required,
-      ]),
-      order_customer_address: new FormControl(this.data.order_customer_address, [
+      order_status: new FormControl('', [
         CustomValidator.required,
       ])
     });
   }
+
   handleSave() {
 
   }
   handleCancel() {
-    if (this.editForm.dirty) {
-      this.dialogNotification.confirm(this.param).subscribe((res) => {
-        if (res === 1) {
-          this.dialogRef.close();
-        }
-      });
-    } else {
-      this.dialogRef.close();
-    }
+
   }
 }

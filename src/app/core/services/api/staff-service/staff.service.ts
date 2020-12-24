@@ -6,6 +6,8 @@ import { HttpRequestModel, HttpRequestService } from '../../http-request-service
 })
 export class StaffService {
   baseUrl = 'https://kltn-be.herokuapp.com/';
+  // baseUrl = 'http://192.168.0.108:8080/';
+  // baseUrl = 'http://localhost:8080/';
   constructor(private http: HttpRequestService) { }
 
   getListStaff(parram: HttpRequestModel) {
@@ -14,6 +16,5 @@ export class StaffService {
     const body = parram.body;
     const headers = parram.headers;
     return this.http.get(apiUrl, params, body, headers);
-    // return of(data);
   }
 }

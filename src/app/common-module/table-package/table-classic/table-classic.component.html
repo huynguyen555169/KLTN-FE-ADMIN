@@ -25,28 +25,28 @@
           </ng-template>
         </ng-container>
         <ng-container *ngIf="!isArray(element[column.value]) && column.type === 'chip1'">
-          <div class="create" *ngIf="element[column.value] === 'create'">
-            Create
+          <div class="create" *ngIf="element[column.value] === 'Create'">
+            Chờ xác nhận
           </div>
-          <div class="pending" *ngIf="element[column.value] === 'pending'">
+          <div class="pending" *ngIf="element[column.value] === 'Pending'">
             Pending
           </div>
-          <div class="cancel" *ngIf="element[column.value] === 'cancel'">
-            Cancel
+          <div class="cancel" *ngIf="element[column.value] === 'Cancel'">
+            Đã huỷ
           </div>
-          <div class="paymentfail" *ngIf="element[column.value] === 'payment_fail'">
+          <div class="paymentfail" *ngIf="element[column.value] === 'Payment_fail'">
             Fail
           </div>
-          <div class="paymentsuccess" *ngIf="element[column.value] === 'payment_success'">
+          <div class="paymentsuccess" *ngIf="element[column.value] === 'Payment_success'">
             Success
           </div>
-          <div class="shipping" *ngIf="element[column.value] === 'shipping'">
+          <div class="shipping" *ngIf="element[column.value] === 'Shipping'">
             Shipping
           </div>
-          <div class="done" *ngIf="element[column.value] === 'done'">
-            Done
+          <div class="done" *ngIf="element[column.value] === 'Done'">
+            Đã giao
           </div>
-          <div class="return" *ngIf="element[column.value] === 'return'">
+          <div class="return" *ngIf="element[column.value] === 'Return'">
             Return
           </div>
 
