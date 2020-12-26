@@ -1,10 +1,14 @@
 <div class="" [formGroup]="editForm">
     <mat-form-field appearance="fill" class="pt-2 pb-10">
-        <mat-label>Edit Status</mat-label>
+        <mat-label>Thay đổi trạng thái</mat-label>
         <mat-select formControlName="order_status" name="order_status">
             <mat-option *ngFor="let food of data1" [value]="food.key">
                 {{food.value}}
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <div class="d-flex justify-content-around">
+        <button mat-button class="btn-action" (click)='handleSave()'> Xác nhận</button>
+        <button mat-button class="btn-action" (click)='handleCancel()'> Huỷ</button>
+    </div>
 </div>

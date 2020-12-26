@@ -23,4 +23,12 @@ export class SalesService {
     const headers = token.headers;
     return this.http.get(apiUrl, params, body, headers);
   }
+
+  editOrderId(parram: HttpRequestModel, token: HttpRequestModel) {
+    const apiUrl = `${this.baseUrl}order/change-order-status`;
+    const params = parram.params;
+    const body = parram.body;
+    const headers = token.headers;
+    return this.http.post(apiUrl, params, body, headers);
+  }
 }
