@@ -29,7 +29,7 @@
             Chờ xác nhận
           </div>
           <div class="pending" *ngIf="element[column.value] === 'Pending'">
-            Pending
+            Chờ lấy hàng
           </div>
           <div class="cancel" *ngIf="element[column.value] === 'Cancel'">
             Đã huỷ
@@ -38,10 +38,10 @@
             Fail
           </div>
           <div class="paymentsuccess" *ngIf="element[column.value] === 'Payment_success'">
-            Success
+            Thành công
           </div>
           <div class="shipping" *ngIf="element[column.value] === 'Shiping'">
-            Shipping
+            Đang giao
           </div>
           <div class="done" *ngIf="element[column.value] === 'Done'">
             Đã giao
