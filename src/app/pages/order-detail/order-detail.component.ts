@@ -14,11 +14,22 @@ export class OrderDetailComponent implements OnInit {
 
   data;
 
-  dataList = dataList;
+  dataList =
+    {
+      name: 'Huy Nguyễn',
+      phone: '0982240061',
+      email: 'huynguyen@gmail.com',
+      gender: 'Nam',
+      address: 'Phú Yên'
+    };
   headers = headers
 
   header1s = header1s;
-  dataList1 = dataStatus
+  dataList1 = {
+    status: 'Preparing',
+    update: '0982240061',
+
+  }
 
   header2s = header2s;
   dataPayment = dataPayment
@@ -40,12 +51,16 @@ export class OrderDetailComponent implements OnInit {
       })
     };
     this.route.queryParams.subscribe((parrams) => {
-      console.log(parrams)
       const getItem = new HttpRequestModel();
       getItem.params = { id: parrams.id }
       this.saleService.getOrderId(getItem, httpOptions).subscribe((res) => {
-        console.log(res)
         this.data = res.data[0]
+        this.dataList.name = this.data.order_customer_name
+        this.dataList.phone = this.data.order_customer_phone
+        this.dataList.address = this.data.order_customer_address
+
+        this.dataList1.status = this.data.order_status.order_status_title_vn
+        this.dataList1.update = this.data.createdAt
 
       })
     })
