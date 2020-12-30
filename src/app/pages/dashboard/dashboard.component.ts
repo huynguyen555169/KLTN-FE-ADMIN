@@ -14,13 +14,14 @@ export class DashboardComponent implements OnInit {
   public lineChartData = [
     {
       data: [2000, 4000, 6000, 8000, 10000, 2000, 4000, 6000, 8000, 10000, 10000, 3000],
-      label: 'This month',
+      label: 'This Year',
     },
     {
       data: [4000, 4000, 6000, 8000, 20000, 8000, 10000, 2000, 4000, 6000, 8000, 10000],
-      label: 'Last month',
+      label: 'Last Year',
     },
   ];
+  data;
   public optionsLine = {
     layout: {
       padding: {
@@ -66,13 +67,14 @@ export class DashboardComponent implements OnInit {
     title: {
       display: true,
       fontColor: '#FFFFFF',
-      text: 'Access By Device',
+      text: 'Buyed Product',
       position: 'top',
     },
   };
-  public doughnutChartData = [60, 30, 10];
+  public doughnutChartData = [0, 0, 0, 0, 0];
+  public doughnutChartData1 = [0, 0, 0, 0, 0];
   public doughnutChartType = 'doughnut';
-  public doughnutChartLabels = ['Mobile', 'Desktop', 'Tablet'];
+  public doughnutChartLabels = ['Shoes', 'Fashion', 'Watch', 'Belt', 'Wallet'];
 
   // pie chart
   public optionsPie = {
@@ -98,9 +100,9 @@ export class DashboardComponent implements OnInit {
       position: 'top',
     },
   };
-  public pieChartData = [400, 150, 50];
+  public pieChartData = [0, 0];
   public pieChartType = 'pie';
-  public pieChartLabels = ['New', 'Continue', 'Log Out'];
+  public pieChartLabels = ['Khách hàng đã mua', 'Khách hàng chưa mua'];
 
   date = new Date();
   weekday = new Array(7);
@@ -108,7 +110,7 @@ export class DashboardComponent implements OnInit {
   time;
   day;
   //
-
+  countALL;
 
 
   constructor(private dashboardService: DashboardService) { }
@@ -126,6 +128,46 @@ export class DashboardComponent implements OnInit {
     this.day = this.date.toDateString();
 
 
+    const getItem = new HttpRequestModel();
+    getItem.params = {}
+    this.dashboardService.getCountAll(getItem).subscribe((res) => {
+      this.countALL = res
+    })
+
+    const getYear = new HttpRequestModel();
+    getYear.params = {}
+    this.dashboardService.getYearAll(getYear).subscribe((res) => {
+      // this.countALL = res
+      this.lineChartData[0].data = res.data[0].data.map((e) => e.value)
+      this.lineChartData[1].data = res.data[1].data.map((e) => e.value)
+    })
+
+    const getCustomer = new HttpRequestModel();
+    getCustomer.params = {}
+    this.dashboardService.getCustomer(getCustomer).subscribe((res) => {
+      // this.countALL = res
+      this.pieChartData[0] = res.customerOrderd
+      this.pieChartData[1] = 100 - res.customerOrderd
+
+    })
+
+    const getTypeProduct = new HttpRequestModel();
+    getTypeProduct.params = {}
+    this.dashboardService.getTypeProduct(getTypeProduct).subscribe((res) => {
+      // this.countALL = res
+      this.doughnutChartData[0] = res.result[1].percent
+      this.doughnutChartData[1] = res.result[2].percent
+      this.doughnutChartData[2] = res.result[3].percent
+      this.doughnutChartData[3] = res.result[4].percent
+      this.doughnutChartData[4] = res.result[5].percent
+      this.doughnutChartData1[0] = res.result[1].value
+      this.doughnutChartData1[1] = res.result[2].value
+      this.doughnutChartData1[2] = res.result[3].value
+      this.doughnutChartData1[3] = res.result[4].value
+      this.doughnutChartData1[4] = res.result[5].value
+
+
+    })
   }
 
 
