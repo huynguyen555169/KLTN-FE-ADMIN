@@ -27,8 +27,11 @@ export class SalesComponent implements OnInit {
     this.getData()
   }
   handleEdit(e) {
-    this.dialog.open(EditOrderComponent, {
+    const dialogRef = this.dialog.open(EditOrderComponent, {
       data: e
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData()
     });
   }
   handleValueSearch(e) {

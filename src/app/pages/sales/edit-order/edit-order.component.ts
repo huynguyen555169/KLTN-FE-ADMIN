@@ -41,7 +41,6 @@ export class EditOrderComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<EditOrderComponent>, private dialogNotification: DialogNotificationService, private saleService: SalesService, private sppner: CSpinnerService) { }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.initForm()
   }
   initForm(): void {
