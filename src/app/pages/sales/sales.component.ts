@@ -35,9 +35,33 @@ export class SalesComponent implements OnInit {
     });
   }
   handleValueSearch(e) {
-
+    const token = JSON.parse(localStorage.getItem('currentUser')).accessToken;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
+    const dataGetListSale = new HttpRequestModel();
+    dataGetListSale.params = { search: e };
+    this.saleService.getListOrder(dataGetListSale, httpOptions).subscribe((item) => {
+      this.data = item.data;
+    }, (error) => {
+    })
   }
   handlePageChange(e) {
+    const token = JSON.parse(localStorage.getItem('currentUser')).accessToken;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    };
+    const dataGetListSale = new HttpRequestModel();
+    dataGetListSale.params = { currentPage: e };
+    this.saleService.getListOrder(dataGetListSale, httpOptions).subscribe((item) => {
+      this.totalPage = item.countPage;
+      this.data = item.data;
+    }, (error) => {
+    })
 
   }
   handleView(e) {
@@ -50,8 +74,9 @@ export class SalesComponent implements OnInit {
         'Authorization': token
       })
     };
-
-    this.saleService.getListOrder(httpOptions).subscribe((res) => {
+    const dataGetListSale = new HttpRequestModel();
+    dataGetListSale.params = { currentPage: this.currentPage };
+    this.saleService.getListOrder(dataGetListSale, httpOptions).subscribe((res) => {
       this.totalPage = res.countPage;
       this.data = res.data;
 

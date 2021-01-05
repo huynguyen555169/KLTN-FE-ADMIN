@@ -9,11 +9,11 @@ export class SalesService {
   // baseUrl = 'http://192.168.0.108:8080/';
   // baseUrl = 'http://localhost:8080/';
   constructor(private http: HttpRequestService) { }
-  getListOrder(parram: HttpRequestModel) {
+  getListOrder(parram: HttpRequestModel, token: HttpRequestModel) {
     const apiUrl = `${this.baseUrl}order/get-all`;
     const params = parram.params;
     const body = parram.body;
-    const headers = parram.headers;
+    const headers = token.headers;
     return this.http.get(apiUrl, params, body, headers);
   }
   getOrderId(parram: HttpRequestModel, token: HttpRequestModel) {
