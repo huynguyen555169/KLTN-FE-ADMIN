@@ -1,4 +1,4 @@
-<div *ngIf="data.length !== 0">
+<div *ngIf="data">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-striped" matSort
     (matSortChange)="handleSortChange($event)">
     <ng-container [matColumnDef]="column.value" *ngFor="let column of tableConfig.columns">
@@ -78,6 +78,6 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
   </table>
 </div>
-<div *ngIf="data.length === 0" class="d-flex row justify-content-center">
+<div *ngIf="data" class="d-flex row justify-content-center">
   No data
 </div>

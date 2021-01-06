@@ -17,7 +17,7 @@ export class SalesService {
     return this.http.get(apiUrl, params, body, headers);
   }
   getOrderId(parram: HttpRequestModel, token: HttpRequestModel) {
-    const apiUrl = `${this.baseUrl}order/get-by-id`;
+    const apiUrl = `${this.baseUrl}order-detail/get-by-order`;
     const params = parram.params;
     const body = parram.body;
     const headers = token.headers;

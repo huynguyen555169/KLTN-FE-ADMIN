@@ -111,6 +111,8 @@ export class DashboardComponent implements OnInit {
   day;
   //
   countALL;
+  check1 = false
+  check2 = false
 
 
   constructor(private dashboardService: DashboardService) { }
@@ -137,6 +139,7 @@ export class DashboardComponent implements OnInit {
     const getYear = new HttpRequestModel();
     getYear.params = {}
     this.dashboardService.getYearAll(getYear).subscribe((res) => {
+
       // this.countALL = res
       this.lineChartData[0].data = res.data[0].data.map((e) => e.value)
       this.lineChartData[1].data = res.data[1].data.map((e) => e.value)
@@ -145,6 +148,7 @@ export class DashboardComponent implements OnInit {
     const getCustomer = new HttpRequestModel();
     getCustomer.params = {}
     this.dashboardService.getCustomer(getCustomer).subscribe((res) => {
+      this.check1 = true
       // this.countALL = res
       this.pieChartData[0] = res.customerOrderd
       this.pieChartData[1] = 100 - res.customerOrderd
@@ -154,6 +158,7 @@ export class DashboardComponent implements OnInit {
     const getTypeProduct = new HttpRequestModel();
     getTypeProduct.params = {}
     this.dashboardService.getTypeProduct(getTypeProduct).subscribe((res) => {
+      this.check2 = true
       // this.countALL = res
       this.doughnutChartData[0] = res.result[1].percent
       this.doughnutChartData[1] = res.result[2].percent
@@ -166,7 +171,7 @@ export class DashboardComponent implements OnInit {
       this.doughnutChartData1[3] = res.result[4].value
       this.doughnutChartData1[4] = res.result[5].value
 
-
+      console.log(this.doughnutChartData)
     })
   }
 
