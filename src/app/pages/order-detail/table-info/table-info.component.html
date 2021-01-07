@@ -11,7 +11,8 @@
                     style="border-bottom:1px solid #E0E0E0;">
                     <div class="table-cell" *ngFor="let cell of objectKeys(data); let i = index">
                         <span class="" *ngIf="cell === 'image'; else elseBlock ">
-                            <img src="{{ data[headers[i].key] }}" alt="" style="width: 100px;height: 100px;">
+                            <img src="{{ data[headers[i].key] }}" alt=""
+                                style="width: 100px;height: 100px; object-fit: cover;">
 
                         </span>
                         <ng-template #elseBlock>{{ data[headers[i].key] }}</ng-template>
@@ -22,7 +23,8 @@
                 <div class="table-row table-body">
                     <div class="table-cell" *ngFor="let cell of objectKeys(dataList); let i = index">
                         <span class="" *ngIf="cell === 'image'; else elseBlock ">
-                            <img src="{{ dataList[headers[i].key] }}" alt="" style="width: 100px;height: 100px;">
+                            <img src="{{ dataList[headers[i].key] }}" alt=""
+                                style="width: 100px;height: 100px; object-fit: cover;">
 
                         </span>
                         <ng-template #elseBlock>{{ dataList[headers[i].key] }}</ng-template>

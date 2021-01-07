@@ -36,6 +36,7 @@ export class OrderDetailComponent implements OnInit {
 
   header3s = header3s;
   dataProduct = dataProduct;
+  product;
 
   header4s = header4s;
   dataProductTotal = dataProductTotal;
@@ -71,7 +72,28 @@ export class OrderDetailComponent implements OnInit {
         } else {
           this.dataPayment.method = "Thanh toán MoMo"
         }
+        this.dataProduct = []
+        this.dataProductTotal = []
+        this.product = res.data[0].order_detail.map((res) => {
+          const newObj = {
+            no: res.productInfo.product_id,
+            image: res.productInfo.product_images[0],
+            name: res.productInfo.product_name,
+            size: res.productInfo.product_name,
+            price: res.productInfo.product_paid_price,
+            qty: res.order_detail_qty
 
+          }
+          const newObj1 = {
+            product_name: res.productInfo.product_name,
+            product_price: res.productInfo.product_paid_price,
+            product_qty: res.order_detail_qty,
+            product_total: res.total
+
+          }
+          this.dataProduct.push(newObj)
+          this.dataProductTotal.push(newObj1)
+        })
 
       })
     })

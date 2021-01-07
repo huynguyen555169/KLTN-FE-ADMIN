@@ -55,10 +55,10 @@
             <div class="header-invoice w-100 p-4 d-flex">
                 <div class="invoice--left w-50">
                     <div class="left--date">
-                        20/2/2020
+                        {{data.createdAt}}
                     </div>
                     <div class="left--adress">
-                        HCM City
+                        {{data.order_customer_address}}
                     </div>
                 </div>
                 <img src="../../../assets/images/Group 1.png" alt="" class="invoice--right">
@@ -72,7 +72,7 @@
                         SUBTOTAL
                     </div>
                     <div class="">
-                        $39.97
+                        {{data.total|currency:"VND"}}
                     </div>
                 </div>
                 <div class="d-flex justify-content-between pb-3">
@@ -80,7 +80,7 @@
                         TAX
                     </div>
                     <div class="">
-                        $77.44
+                        đ0
                     </div>
                 </div>
                 <div class="d-flex justify-content-between pb-3">
@@ -88,7 +88,7 @@
                         DISCOUNT
                     </div>
                     <div class="">
-                        --$10.17
+                        -đ0
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                     TOTAL
                 </div>
                 <div class="">
-                    $10.17
+                    {{data.total|currency:"VND"}}
                 </div>
             </div>
 
