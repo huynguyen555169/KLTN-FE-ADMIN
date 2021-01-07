@@ -55,12 +55,23 @@ export class OrderDetailComponent implements OnInit {
       getItem.params = { id: parrams.id }
       this.saleService.getOrderId(getItem, httpOptions).subscribe((res) => {
         this.data = res.data[0]
+        this.codeOrder = this.data.order_id
         this.dataList.name = this.data.order_customer_name
         this.dataList.phone = this.data.order_customer_phone
         this.dataList.address = this.data.order_customer_address
 
         this.dataList1.status = this.data.order_status.order_status_title_vn
         this.dataList1.update = this.data.createdAt
+
+        this.dataPayment.id = this.data.order_is_cod
+        this.dataPayment.date = this.data.createdAt
+        this.dataPayment.amount = this.data.total
+        if (this.data.order_is_cod === 1) {
+          this.dataPayment.method = "Thanh toán khi nhận hàng"
+        } else {
+          this.dataPayment.method = "Thanh toán MoMo"
+        }
+
 
       })
     })

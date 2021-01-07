@@ -30,7 +30,7 @@ export const dataStatus =
 export const header2s = [
     { key: 'id', value: 'TransactionID' },
     { key: 'method', value: 'Payment Method' },
-    { key: 'amount', value: 'Method' },
+    { key: 'amount', value: 'Total' },
     { key: 'date', value: 'Date' },
 ]
 
