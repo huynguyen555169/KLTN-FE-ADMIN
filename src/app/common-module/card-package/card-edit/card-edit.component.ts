@@ -56,7 +56,7 @@ export class CardEditComponent implements OnInit {
       ]),
       product_description: new FormControl(this.data.data.product_description, [
         CustomValidator.required,
-        CustomValidator.maxLength(80),
+        CustomValidator.maxLength(250),
       ]),
       product_type_fk: new FormControl(this.data.data.product_type_fk, [
         CustomValidator.required,
