@@ -78,6 +78,6 @@
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
   </table>
 </div>
-<div *ngIf="data" class="d-flex row justify-content-center">
+<div *ngIf="!data" class="d-flex row justify-content-center">
   No data
 </div>
