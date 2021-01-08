@@ -13,8 +13,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="product_name" />
                     <mat-error>{{
-              createForm.controls["product_name"].errors?.message
-            }}</mat-error>
+                        createForm.controls["product_name"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
@@ -22,8 +22,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="product_unit_price" />
                     <mat-error>{{
-              createForm.controls["product_unit_price"].errors?.message
-            }}</mat-error>
+                        createForm.controls["product_unit_price"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -33,8 +33,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="product_description" />
                     <mat-error>{{
-              createForm.controls["product_description"].errors?.message
-            }}</mat-error>
+                        createForm.controls["product_description"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
             <div>
@@ -42,8 +42,8 @@
                 <mat-form-field [floatLabel]="'never'">
                     <input matInput formControlName="product_qty" />
                     <mat-error>{{
-              createForm.controls["product_qty"].errors?.message
-            }}</mat-error>
+                        createForm.controls["product_qty"].errors?.message
+                        }}</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -51,7 +51,8 @@
             <div>
                 <div class="dialog-title">Type</div>
                 <mat-form-field [floatLabel]="'never'">
-                    <mat-select name="product_type_fk" formControlName="product_type_fk">
+                    <mat-select name="product_type_fk" formControlName="product_type_fk"
+                        (selectionChange)="handleChooseType($event)">
                         <mat-option *ngFor="let product_type_fk of data.typeData"
                             [value]="product_type_fk.product_type_id">
                             {{ product_type_fk.product_type_name }}
@@ -63,8 +64,7 @@
                 <div class="dialog-title">Size</div>
                 <mat-form-field [floatLabel]="'never'">
                     <mat-select name="product_size_fk" formControlName="product_size_fk">
-                        <mat-option *ngFor="let product_size_fk of data.sizeData"
-                            [value]="product_size_fk.product_size_id">
+                        <mat-option *ngFor="let product_size_fk of listSize" [value]="product_size_fk.product_size_id">
                             {{ product_size_fk.product_size_title }}
                         </mat-option>
                     </mat-select>

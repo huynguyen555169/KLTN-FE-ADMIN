@@ -19,7 +19,7 @@ export class TableOneComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() clearSort;
   @Output() itemEdit = new EventEmitter<string>();
   @Output() isSort = new EventEmitter<any>();
-  displayedColumns: string[] = ['product_images', 'product_name', 'product_unit_price', 'product_qty', 'product_type_fk', 'product_status', 'action'];
+  displayedColumns: string[] = ['product_images', 'product_name', 'product_size', 'product_unit_price', 'product_qty', 'product_type_fk', 'product_status', 'action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;

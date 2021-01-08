@@ -28,6 +28,7 @@ export class DialogCreateComponent implements OnInit {
       { text: 'NO', actionValue: 2 },
     ],
   };
+  listSize;
   createForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogCreateComponent>,
@@ -49,7 +50,7 @@ export class DialogCreateComponent implements OnInit {
       ]),
       product_name: new FormControl('', [
         CustomValidator.required,
-        CustomValidator.maxLength(82),
+        CustomValidator.maxLength(500),
 
       ]),
       product_unit_price: new FormControl('', [
@@ -85,6 +86,14 @@ export class DialogCreateComponent implements OnInit {
     })
   }
   handleSelect(e): void {
+    const dataFashionEdit = new HttpRequestModel();
+    dataFashionEdit.params = { product_type: e.value }
+    this.fashionService.getListSize(dataFashionEdit).subscribe((res) => {
+      this.spinner.hide()
+      this.listSize = res
+
+    })
+
   }
   handleCancel(): void {
     if (this.createForm.dirty) {

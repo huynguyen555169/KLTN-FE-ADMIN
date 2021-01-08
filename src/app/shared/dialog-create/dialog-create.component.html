@@ -64,8 +64,7 @@
                 <div class="dialog-title">Size</div>
                 <mat-form-field [floatLabel]="'never'">
                     <mat-select name="product_size_fk" formControlName="product_size_fk">
-                        <mat-option *ngFor="let product_size_fk of data.sizeData"
-                            [value]="product_size_fk.product_size_id">
+                        <mat-option *ngFor="let product_size_fk of listSize" [value]="product_size_fk.product_size_id">
                             {{ product_size_fk.product_size_title }}
                         </mat-option>
                     </mat-select>

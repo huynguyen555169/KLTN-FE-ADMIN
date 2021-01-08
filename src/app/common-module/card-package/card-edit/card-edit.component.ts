@@ -26,6 +26,7 @@ export class CardEditComponent implements OnInit {
       { text: 'NO', actionValue: 2 },
     ],
   };
+  listSize;
   createForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<CardEditComponent>,
@@ -35,7 +36,15 @@ export class CardEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const dataFashionEdit = new HttpRequestModel();
+    dataFashionEdit.params = { product_type: this.data.data.product_type_fk }
+    this.fashionService.getListSize(dataFashionEdit).subscribe((res) => {
+      this.listSize = res
+
+    })
     this.initForm()
+
+
   }
   initForm(): void {
     this.createForm = new FormGroup({
@@ -47,7 +56,7 @@ export class CardEditComponent implements OnInit {
       ]),
       product_name: new FormControl(this.data.data.product_name, [
         CustomValidator.required,
-        CustomValidator.maxLength(32),
+        CustomValidator.maxLength(300),
 
       ]),
       product_unit_price: new FormControl(this.data.data.product_unit_price, [
@@ -56,7 +65,7 @@ export class CardEditComponent implements OnInit {
       ]),
       product_description: new FormControl(this.data.data.product_description, [
         CustomValidator.required,
-        CustomValidator.maxLength(250),
+        CustomValidator.maxLength(550),
       ]),
       product_type_fk: new FormControl(this.data.data.product_type_fk, [
         CustomValidator.required,
@@ -94,6 +103,16 @@ export class CardEditComponent implements OnInit {
   }
   handleFile(e) {
     this.files = e;
+  }
+  handleChooseType(e) {
+    const dataFashionEdit = new HttpRequestModel();
+    dataFashionEdit.params = { product_type: e.value }
+    this.fashionService.getListSize(dataFashionEdit).subscribe((res) => {
+      this.spinner.hide()
+      this.listSize = res
+
+    })
+
   }
 
 }

@@ -40,7 +40,7 @@ export class FashionService {
     return this.http.get(apiUrl, params, body, headers);
   }
   getListSize(parram: HttpRequestModel): Observable<any> {
-    const apiUrl = `${this.baseUrl}product-size/get-all`;
+    const apiUrl = `${this.baseUrl}product-size/get-by-product-type`;
     const params = parram.params;
     const body = parram.body;
     const headers = parram.headers;
