@@ -49,7 +49,7 @@ export class DialogCreateComponent implements OnInit {
       ]),
       product_name: new FormControl('', [
         CustomValidator.required,
-        CustomValidator.maxLength(32),
+        CustomValidator.maxLength(82),
 
       ]),
       product_unit_price: new FormControl('', [
@@ -58,7 +58,7 @@ export class DialogCreateComponent implements OnInit {
       ]),
       product_description: new FormControl('', [
         CustomValidator.required,
-        CustomValidator.maxLength(80),
+        CustomValidator.maxLength(300),
       ]),
       product_type_fk: new FormControl('', [
         CustomValidator.required,
