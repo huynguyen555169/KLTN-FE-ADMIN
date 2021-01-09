@@ -76,17 +76,17 @@ export class OrderDetailComponent implements OnInit {
         this.dataProductTotal = []
         this.product = res.data[0].order_detail.map((res) => {
           const newObj = {
-            no: res.productInfo.product_id,
-            image: res.productInfo.product_images[0],
-            name: res.productInfo.product_name,
-            size: res.productInfo.product_name,
-            price: res.productInfo.product_paid_price,
+            no: res.productInfo[0].product_id,
+            image: res.productInfo[0].product_images[0],
+            name: res.productInfo[0].product_name,
+            size: res.productInfo[0].size.product_size_title,
+            price: res.productInfo[0].product_paid_price,
             qty: res.order_detail_qty
 
           }
           const newObj1 = {
-            product_name: res.productInfo.product_name,
-            product_price: res.productInfo.product_paid_price,
+            product_name: res.productInfo[0].product_name,
+            product_price: res.productInfo[0].product_paid_price,
             product_qty: res.order_detail_qty,
             product_total: res.total
 
